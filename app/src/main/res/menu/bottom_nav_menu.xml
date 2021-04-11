@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="home" />
+
+    <item
+        android:id="@+id/navigation_pembayaran"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Pembayaran" />
+
+    <item
+        android:id="@+id/navigation_riwayat"
+        android:icon="@drawable/ic_history"
+        android:title="Riwayat" />
+
+    <item
+        android:id="@+id/navigation_akun"
+        android:icon="@drawable/ic_user"
+        android:title="Akun" />
+
+</menu>
