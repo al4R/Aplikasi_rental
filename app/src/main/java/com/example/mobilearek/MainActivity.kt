@@ -2,17 +2,20 @@ package com.example.mobilearek
 
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import com.example.mobilearek.activity.LoginActivity
+import com.example.mobilearek.fragment.AkunBaruFragment
 import com.example.mobilearek.fragment.AkunFragment
 import com.example.mobilearek.fragment.HomeFragment
-import com.example.mobilearek.fragment.PembayaranFragment
 import com.example.mobilearek.fragment.RiwayatFragment
 import com.example.mobilearek.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,15 +24,15 @@ class MainActivity : AppCompatActivity() {
 
     private val fragmentHome: Fragment = HomeFragment ()
     private val fragmentRwt: Fragment = RiwayatFragment ()
-    private val fragmentBayar: Fragment = PembayaranFragment ()
     private val fragmentAkun: Fragment = AkunFragment ()
+    private val fragmentBaru: Fragment = AkunBaruFragment ()
     private val fm : FragmentManager = supportFragmentManager
     private var active: Fragment = fragmentHome
-
     private lateinit var menu: Menu
     private lateinit var menuItem: MenuItem
     private lateinit var bottomNavigationView: BottomNavigationView
     private var statusLogin = false
+    private var backPressedTime = 0L
 
     private lateinit var s:SharedPref
 
@@ -44,8 +47,8 @@ class MainActivity : AppCompatActivity() {
     fun setUpBottomNav(){
         fm.beginTransaction().add(R.id.container,fragmentHome).show(fragmentHome).commit()
         fm.beginTransaction().add(R.id.container,fragmentRwt).hide(fragmentRwt).commit()
-        fm.beginTransaction().add(R.id.container,fragmentBayar).hide(fragmentBayar).commit()
         fm.beginTransaction().add(R.id.container,fragmentAkun).hide(fragmentAkun).commit()
+        fm.beginTransaction().add(R.id.container,fragmentBaru).hide(fragmentBaru).commit()
 
         bottomNavigationView = findViewById(R.id.nav_view)
         menu = bottomNavigationView.menu
@@ -56,17 +59,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home ->{
                     callFragment(0,fragmentHome)
                 }
-                R.id.navigation_pembayaran ->{
-                    callFragment(1,fragmentBayar)
-                }
                 R.id.navigation_riwayat ->{
-                    callFragment(2,fragmentRwt)
+                    callFragment(1,fragmentRwt)
                 }
                 R.id.navigation_akun ->{
                     if (s.getStatusLogin()){
-                        callFragment( 3,fragmentAkun)
+                        callFragment( 2,fragmentAkun)
                     }else{
-                        startActivity(Intent(this,LoginActivity::class.java))
+                        callFragment(2,fragmentBaru)
                     }
                 }
             }
@@ -74,10 +74,24 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    fun callFragment(int: Int, fragment: Fragment){
+
+    fun callFragment(int: Int, fragment: Fragment) {
         menuItem = menu.getItem(int)
         menuItem.isChecked = true
         fm.beginTransaction().hide(active).show(fragment).commit()
         active = fragment
     }
+    override fun onBackPressed() {
+        if(bottomNavigationView.selectedItemId==R.id.navigation_home && backPressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+        }else if (bottomNavigationView.selectedItemId==R.id.navigation_home && backPressedTime + 2000 < System.currentTimeMillis())
+        {
+            Toast.makeText(this@MainActivity, "Tekan sekali lagi", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            bottomNavigationView.selectedItemId = R.id.navigation_home
+        }
+        backPressedTime = System.currentTimeMillis()
+    }
+
 }

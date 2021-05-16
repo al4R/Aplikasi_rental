@@ -5,137 +5,143 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    
     tools:context=".activity.DaftarActivity">
-
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="right">
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:background="#00FFFFFF"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_close_black_24"/>
+    </LinearLayout>
     <TextView
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="45dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Daftar"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:textColor="@color/ColorBlack"
         android:textSize="25dp"
         android:textStyle="bold" />
     <LinearLayout
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:layout_marginTop="0dp">
+        android:background="#00FFFFFF">
 
-            <androidx.core.widget.NestedScrollView
-                android:paddingBottom="10dp"
-                android:layout_marginTop="10dp"
+        <androidx.core.widget.NestedScrollView
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="250dp">
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="250dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Nama"
-                            app:startIconDrawable="@drawable/ic_baseline_person_24">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama"
+                    app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_nama"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="250dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:hint="Email"
-                            app:startIconDrawable="@drawable/ic_baseline_email_24">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Email"
+                    app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:inputType="textEmailAddress"
-                                android:id="@+id/edit_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="textEmailAddress"
+                        android:id="@+id/edit_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="250dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:hint="Telepon"
-                            app:startIconDrawable="@drawable/ic_baseline_phone_24">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Telepon"
+                    app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:inputType="phone"
-                                android:id="@+id/edit_telepon"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="phone"
+                        android:id="@+id/edit_telepon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="250dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:hint="Password"
-                            app:passwordToggleEnabled="true"
-                            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Password"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_password"
-                                android:inputType="textPassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_password"
+                        android:inputType="textPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="250dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            app:startIconDrawable="@drawable/ic_baseline_credit_card_24"
-                            android:hint="NIK">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:startIconDrawable="@drawable/ic_baseline_credit_card_24"
+                    android:hint="NIK">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_nik"
-                                android:inputType="phone"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/upload_ktp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                            app:strokeWidth="1dp"
-                            android:text="Upload KTP"
-                            android:fontFamily="@font/font_roboto"
-                            android:textAllCaps="false"
-                            android:textAlignment="textStart"
-                            android:letterSpacing="0.1"
-                            android:textColor="@color/colorsoftBlack"
-                            app:strokeColor="@color/colorsoftBlack"
-                            android:layout_width="250dp"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"/>
-                </LinearLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_nik"
+                        android:inputType="phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/upload_ktp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeWidth="1dp"
+                    android:text="Upload KTP"
+                    android:fontFamily="@font/font_roboto"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    android:letterSpacing="0.1"
+                    android:textColor="@color/colorsoftBlack"
+                    app:strokeColor="@color/colorsoftBlack"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"/>
+            </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            app:strokeColor="@color/colorWhite"
-            app:strokeWidth="3dp"
             android:layout_marginTop="10dp"
             android:id="@+id/btn_daftar"
             android:layout_width="260dp"
@@ -147,7 +153,6 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-    </LinearLayout>
     </LinearLayout>
     <ProgressBar
         android:visibility="gone"

@@ -1,0 +1,27 @@
+package com.example.mobilearek.model;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+
+@Entity(tableName = "keranjang")
+public class Mobil{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "idTb")
+    public int idTb;
+
+    public int id;
+    public String name;
+    public String harga;
+    public String image;
+    public String merk;
+    public String tahun;
+    public String transmisi;
+    public String kapasitas;
+    public String deskripsi;
+    public int status;
+    public String created_at;
+    public String updated_at;
+
+}

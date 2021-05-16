@@ -1,7 +1,6 @@
 package com.example.mobilearek.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -26,19 +25,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         s= SharedPref(this)
+        val btndaftar = findViewById<Button>(R.id.btn_daftar)
 
         btn_masuk.setOnClickListener {
-            s.setStatusLogin(true)
             login()
         }
-        val button_daftar = findViewById<Button>(R.id.btn_daftar)
-
-        button_daftar.setOnClickListener {
+        btndaftar.setOnClickListener {
             val intent= Intent(this,DaftarActivity::class.java)
         startActivity(intent)}
     }
 
-    fun login() {
+    private fun login() {
         if(edit_email.text!!.isEmpty()) {
             edit_email.error = "Email tidak boleh kosong"
             edit_email.requestFocus()
@@ -50,22 +47,26 @@ class LoginActivity : AppCompatActivity() {
         }
 
         progress_bar.visibility = View.VISIBLE
-        ApiConfig.instanceRetrofit.login(
-            edit_email.text.toString(),
-            edit_password.text.toString()
-
+        ApiConfig.instanceRetrofit.login(edit_email.text.toString(), edit_password.text.toString()
         ).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 progress_bar.visibility = View.GONE
-                val respon = response.body()!!
-                if (respon.success == 1){
-                    s.setStatusLogin(true)
-                    val intent = Intent (this@LoginActivity,MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    Toast.makeText(this@LoginActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
+                val respon = response.body()
+                if (respon != null) {
+                    if (respon.success == 1){
+                        s.setStatusLogin(true)
+                        s.setUser(respon.user)
+                        s.setString(s.nama,respon.user.name)
+                        s.setString(s.email,respon.user.email)
+                        s.setString(s.telepon,respon.user.telepon)
+                        val intent = Intent (this@LoginActivity,MainActivity::class.java)
+                        Toast.makeText(this@LoginActivity, "Selamat" + respon.user.name, Toast.LENGTH_SHORT).show()
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        finish()
+                    }else{
+                        Toast.makeText(this@LoginActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 

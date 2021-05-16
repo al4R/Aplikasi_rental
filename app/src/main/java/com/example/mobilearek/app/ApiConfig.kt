@@ -1,6 +1,7 @@
 package com.example.mobilearek.app
 
 import android.graphics.Bitmap
+import com.example.mobilearek.util.Config
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,8 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiConfig {
-    private const val BASE_URL =
-        "http://192.168.5.104/myarek/public/api/"
+    private const val BASE_URL = Config.baseUrl+"api/"
     private val client: Retrofit
         get() {
             val gson = GsonBuilder()

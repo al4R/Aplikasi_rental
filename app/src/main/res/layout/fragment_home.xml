@@ -8,18 +8,18 @@
     tools:context=".fragment.HomeFragment">
 
     <RelativeLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorNavBg"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_height="57dp"
+        android:background="@color/bg_btn_color"
+        android:orientation="vertical"
+        >
 
         <androidx.cardview.widget.CardView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="50dp"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
-            app:cardCornerRadius="17dp">
+            android:layout_height="30dp"
+            app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,35 @@
                     android:hint="Cari disini" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        <RelativeLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            >
+            <ImageView
+                android:background="#00FFFFFF"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_directions_car_24"
+                />
+            <RelativeLayout
+                android:id="@+id/id_bulat"
+                android:visibility="gone"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_bulat"
+                android:layout_width="14dp"
+                android:layout_height="14dp">
+                <TextView
+                    android:id="@+id/tv_angka"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="1"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorNavItem"/>
+            </RelativeLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -61,7 +89,10 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_produk"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center"
+                    android:id="@+id/rv_mobil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-2dp"
         android:background="?android:attr/windowBackground"
-        app:backgroundTint="@color/colorNavBg"
+        app:backgroundTint="@color/bg_btn_color"
         app:itemIconTint="@menu/bottom_nav_menu_color"
         app:itemTextColor="@menu/bottom_nav_menu_color"
         app:menu="@menu/bottom_nav_menu" />
