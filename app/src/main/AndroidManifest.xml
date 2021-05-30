@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.EditProfileActivity"></activity>
+        <activity android:name=".activity.DetailPesananActivity"></activity>
+        <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.PesananActivity" />
         <activity android:name=".activity.DetailMobilActivity" />
         <activity android:name=".activity.DaftarActivity" />

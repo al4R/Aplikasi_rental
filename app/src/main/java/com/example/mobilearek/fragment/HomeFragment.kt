@@ -1,34 +1,31 @@
 package com.example.mobilearek.fragment
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilearek.R
+import com.example.mobilearek.activity.PesananActivity
 import com.example.mobilearek.adapter.AdapterMobil
 import com.example.mobilearek.app.ApiConfig
 import com.example.mobilearek.model.Mobil
 import com.example.mobilearek.model.ResponModel
 import com.example.mobilearek.room.MyDatabase
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
     private lateinit var rvMobil: RecyclerView
     lateinit var idBulat : RelativeLayout
     lateinit var tvAngka : TextView
     lateinit var myDb : MyDatabase
+    lateinit var icMobbil : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +33,9 @@ class HomeFragment : Fragment() {
     ): View? {
         val view:View = inflater.inflate(R.layout.fragment_home, container, false)
         myDb = MyDatabase.getInstance(requireActivity())!!
-        rvMobil = view.findViewById(R.id.rv_mobil)
-        idBulat = view.findViewById(R.id.id_bulat)
-        tvAngka = view.findViewById(R.id.tv_angka)
 
-        getMobil()
+        init(view)
+        mainButton()
 
         return view
     }
@@ -50,6 +45,7 @@ class HomeFragment : Fragment() {
         rvMobil.layoutManager = layoutManager
     }
     private var listMobil:ArrayList<Mobil> = ArrayList()
+    private var displayList = ArrayList<Mobil>()
 
     private fun getMobil(){
         ApiConfig.instanceRetrofit.getMobil().enqueue(object : Callback<ResponModel> {
@@ -62,14 +58,14 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
-
+                Toast.makeText(activity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
     fun check(){
-        val data = myDb.daoNote().getAll()
+        val data = myDb.daoPesan().getAll()
         if (data.isNotEmpty()){
             idBulat.visibility = View.VISIBLE
             tvAngka.text = data.size.toString()
@@ -78,8 +74,60 @@ class HomeFragment : Fragment() {
         }
     }
 
+    fun mainButton(){
+        icMobbil.setOnClickListener{
+            val intent = Intent (activity, PesananActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    fun init(view: View){
+        rvMobil = view.findViewById(R.id.rv_mobil)
+        idBulat = view.findViewById(R.id.id_bulat)
+        tvAngka = view.findViewById(R.id.tv_angka)
+        icMobbil = view.findViewById(R.id.ic_mobil)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu,menu)
+
+        val search = menu.findItem(R.id.menu_search)
+
+       if (search != null){
+           val searchView = search.actionView as androidx.appcompat.widget.SearchView
+           searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+               override fun onQueryTextSubmit(query: String?): Boolean {
+                   return true
+               }
+
+               override fun onQueryTextChange(newText: String?): Boolean {
+                   if(newText!!.isNotEmpty()){
+                       displayList.clear()
+                       val search = newText.toLowerCase(Locale.getDefault())
+                       listMobil.forEach{
+                           if (it.name.toLowerCase(Locale.getDefault()).contains(search)){
+                               displayList.add(it)
+                           }
+                       }
+                       rvMobil.adapter!!.notifyDataSetChanged()
+                   }else{
+                       displayList.clear()
+                       displayList.addAll(listMobil)
+                       rvMobil.adapter!!.notifyDataSetChanged()
+                   }
+
+                   return true
+               }
+
+           })
+       }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
     override fun onResume() {
-        check()
         super.onResume()
+        check()
+        getMobil()
     }
 }
+
+

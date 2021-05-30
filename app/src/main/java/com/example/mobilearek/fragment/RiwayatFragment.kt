@@ -22,8 +22,6 @@ class RiwayatFragment : Fragment() {
         // Inflate the layout for this fragment
         val view:View = inflater.inflate(R.layout.fragment_riwayat, container, false)
 
-
-
         return view
     }
 

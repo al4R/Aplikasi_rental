@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }else if (bottomNavigationView.selectedItemId==R.id.navigation_home && backPressedTime + 2000 < System.currentTimeMillis())
         {
-            Toast.makeText(this@MainActivity, "Tekan sekali lagi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "Tekan lagi untuk keluar", Toast.LENGTH_SHORT).show()
         }
         else{
             bottomNavigationView.selectedItemId = R.id.navigation_home

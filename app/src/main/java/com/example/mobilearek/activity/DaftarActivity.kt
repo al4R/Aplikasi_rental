@@ -64,8 +64,8 @@ class DaftarActivity : AppCompatActivity() {
            edit_nama.text.toString(),
            edit_email.text.toString(),
            edit_password.text.toString(),
-            edit_telepon.text.toString(),
-            edit_nik.text.toString()
+           edit_telepon.text.toString(),
+           edit_nik.text.toString()
 
         ).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel >, response: Response<ResponModel>) {

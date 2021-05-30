@@ -7,7 +7,7 @@ import com.example.mobilearek.model.Mobil
 
 @Suppress("AndroidUnresolvedRoomSqlReference")
 @Dao
-interface DaoKeranjang {
+interface DaoPesanan {
 
     @Insert(onConflict = REPLACE)
     fun insert(data: Mobil)
@@ -22,7 +22,7 @@ interface DaoKeranjang {
     fun getAll(): List<Mobil>
 
     @Query("SELECT * FROM keranjang WHERE id = :id LIMIT 1")
-    fun getNote(id: Int): List<Mobil>
+    fun getMobil(id: Int): Mobil
 
     @Query("DELETE FROM keranjang")
     fun deleteAll(): Int

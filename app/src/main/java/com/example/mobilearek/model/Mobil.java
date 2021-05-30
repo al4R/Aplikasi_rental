@@ -20,8 +20,15 @@ public class Mobil{
     public String transmisi;
     public String kapasitas;
     public String deskripsi;
+    public String no_kendaraan;
     public int status;
     public String created_at;
     public String updated_at;
+
+    public String total;
+    public String tglSewa;
+    public String jamSewa;
+    public String tglKembali;
+    public String jamKembali;
 
 }
