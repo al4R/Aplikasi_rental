@@ -24,6 +24,7 @@
         android:orientation="horizontal"
         android:gravity="right">
         <ImageView
+            android:id="@+id/btn_close"
             android:layout_marginRight="10dp"
             android:background="#00FFFFFF"
             android:layout_width="30dp"
@@ -31,6 +32,8 @@
             android:src="@drawable/ic_baseline_close_24"/>
     </LinearLayout>
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
@@ -44,10 +47,9 @@
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_baseline_email_24"
             app:hintAnimationEnabled="true"
-
             android:hint="Email">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_email"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -63,7 +65,7 @@
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_password"
+                android:id="@+id/et_password"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

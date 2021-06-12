@@ -23,8 +23,6 @@ class AkunBaruFragment : Fragment() {
     ): View? {
         val view : View = inflater.inflate(R.layout.fragment_baru, container, false)
         init(view)
-
-
         btn()
 
         return view

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,20 +7,23 @@
     android:orientation="vertical"
     tools:context=".activity.DetailPesananActivity">
     <include
+
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@+id/ll"
+        android:layout_marginTop="70dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
-
                 android:layout_width="wrap_content"
                 android:layout_height="110dp">
                 <ImageView
@@ -28,10 +31,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_width="80dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/brio"/>
+                    android:layout_height="40dp" />
                 <TextView
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:id="@+id/tv_noRek"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="55dp"
@@ -46,8 +48,7 @@
                     android:padding="20dp"
                     android:gravity="center"
                     android:textSize="20dp"
-                    android:textColor="@color/bg_btn_color"
-                    android:textStyle="bold"
+                    android:textColor="@color/colorsoftBlack"
                     android:letterSpacing="0.1"
                     android:textAlignment="center"
                     android:text="1234758920029874"/>
@@ -260,14 +261,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/colorGrey"/>
-            <com.google.android.material.button.MaterialButton
-                android:layout_marginTop="10dp"
-                android:id="@+id/btn_upload"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:hint="Upload bukti"
-                android:textColorHint="@color/colorWhite"/>
+<!--            <RelativeLayout-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingBottom="5dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_upload"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="upload bukti"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:layout_height="4dp"-->
+<!--                    android:background="@color/colorGrey"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_marginLeft="175dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_baseline_folder_24"/>-->
+<!--            </RelativeLayout>-->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginTop="5dp"
@@ -286,8 +305,26 @@
                     android:text="Penyewa harus datang ke tempat penyewaan untuk mengambil dan mengembalikan mobil"/>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/ll"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pesan"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/bg_btn_color"
+            android:text="Buat Pesanan"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progres_bar"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
 
-
-
-</LinearLayout>
+</RelativeLayout>

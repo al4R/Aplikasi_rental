@@ -15,6 +15,7 @@ class SharedPref(activity: Activity){
     val telepon = "telepon"
     val email = "email"
     val user = "user"
+    val image = "image"
 
     init {
         sp = activity.getSharedPreferences(mypref, Context.MODE_PRIVATE)

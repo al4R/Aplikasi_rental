@@ -5,5 +5,7 @@ class User {
     lateinit var name:String
     lateinit var telepon:String
     lateinit var nik:String
+    lateinit var image :String
+    lateinit var ktp:String
     var id=0
 }

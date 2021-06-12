@@ -13,10 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.mobilearek.fragment.AkunBaruFragment
-import com.example.mobilearek.fragment.AkunFragment
-import com.example.mobilearek.fragment.HomeFragment
-import com.example.mobilearek.fragment.RiwayatFragment
+import com.example.mobilearek.fragment.*
 import com.example.mobilearek.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val fragmentRwt: Fragment = RiwayatFragment ()
     private val fragmentAkun: Fragment = AkunFragment ()
     private val fragmentBaru: Fragment = AkunBaruFragment ()
+    private val fragmentPesanan: Fragment = PesananFragment ()
     private val fm : FragmentManager = supportFragmentManager
     private var active: Fragment = fragmentHome
     private lateinit var menu: Menu
@@ -46,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun setUpBottomNav(){
         fm.beginTransaction().add(R.id.container,fragmentHome).show(fragmentHome).commit()
+        fm.beginTransaction().add(R.id.container,fragmentPesanan).hide(fragmentPesanan).commit()
         fm.beginTransaction().add(R.id.container,fragmentRwt).hide(fragmentRwt).commit()
         fm.beginTransaction().add(R.id.container,fragmentAkun).hide(fragmentAkun).commit()
         fm.beginTransaction().add(R.id.container,fragmentBaru).hide(fragmentBaru).commit()
@@ -59,14 +58,17 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home ->{
                     callFragment(0,fragmentHome)
                 }
+                R.id.navigation_pesanan->{
+                    callFragment(1,fragmentPesanan)
+                }
                 R.id.navigation_riwayat ->{
-                    callFragment(1,fragmentRwt)
+                    callFragment(2,fragmentRwt)
                 }
                 R.id.navigation_akun ->{
                     if (s.getStatusLogin()){
-                        callFragment( 2,fragmentAkun)
+                        callFragment( 3,fragmentAkun)
                     }else{
-                        callFragment(2,fragmentBaru)
+                        callFragment(3,fragmentBaru)
                     }
                 }
             }

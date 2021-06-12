@@ -1,20 +1,25 @@
 package com.example.mobilearek.app
 
 
+
 import com.example.mobilearek.model.ResponModel
+import com.example.mobilearek.model.Transaksi
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
 
-    @FormUrlEncoded
+    @Multipart
     @POST("register")
     fun register(
-        @Field("name") nama :String,
-        @Field("email") email :String,
-        @Field("password") password :String,
-        @Field("telepon") telepon :String,
-        @Field("nik") nik :String
+        @Part("name")  nama:RequestBody,
+        @Part("email") email :RequestBody,
+        @Part("password") password :RequestBody,
+        @Part("telepon") telepon :RequestBody,
+        @Part("nik") nik :RequestBody,
+        @Part ktp: MultipartBody.Part? = null
     ): Call<ResponModel>
 
     @FormUrlEncoded
@@ -24,10 +29,32 @@ interface ApiService {
         @Field("password") password :String
     ): Call<ResponModel>
 
+    @Multipart
+    @POST("uimage/{id}")
+    fun ubahPp(
+        @Path("id") id: Int,
+        @Part image: MultipartBody.Part? = null
+    ): Call<ResponModel>
+
+    @POST("pesan")
+    fun pesan(
+        @Body data :Transaksi
+    ): Call<ResponModel>
+
     @FormUrlEncoded
-    @PATCH("update")
-    fun update(): Call<ResponModel>
+    @POST("upuser/{id}")
+    fun updateUser(
+        @Path("id") id: Int,
+        @Field("email") email :String,
+        @Field("name") nama :String,
+        @Field("telepon") telepon :String
+    ): Call<ResponModel>
 
     @GET("mobil")
     fun getMobil(): Call<ResponModel>
+
+    @GET("history/{id}")
+        fun getRiwayat(
+            @Path("id") id: Int
+        ): Call<ResponModel>
 }

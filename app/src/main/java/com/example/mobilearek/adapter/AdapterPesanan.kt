@@ -10,9 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilearek.R
-import com.example.mobilearek.activity.DetailMobilActivity
 import com.example.mobilearek.activity.DetailPesananActivity
-import com.example.mobilearek.activity.PesananActivity
+import com.example.mobilearek.activity.UpdatePesananActivity
 import com.example.mobilearek.model.Mobil
 import com.example.mobilearek.room.MyDatabase
 import com.google.gson.Gson
@@ -31,9 +30,11 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
         val tvCancel = view.findViewById<TextView>(R.id.tv_cancel)
         val idTr = view.findViewById<CardView>(R.id.id_tr)
 
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_pesanan,parent,false)
+
         return Holder(view)
     }
     override fun getItemCount(): Int {
@@ -52,7 +53,7 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
         }
 
         holder.tvUpdate.setOnClickListener {
-            val intent = Intent(activity, DetailMobilActivity::class.java)
+            val intent = Intent(activity, UpdatePesananActivity::class.java)
             val str = Gson().toJson(data[position],Mobil::class.java)
             intent.putExtra("extra",str)
             activity.startActivity(intent)
@@ -65,7 +66,9 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
     }
     interface Listeners{
         fun onDelete(position: Int)
+
     }
+
     private fun delete(data : Mobil){
         val myDb = MyDatabase.getInstance(activity)
         CompositeDisposable().add(Observable.fromCallable { myDb!!.daoPesan().delete(data) }
@@ -76,4 +79,5 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
                 Log.d("respons", "data deleted")
             })
     }
+
 }

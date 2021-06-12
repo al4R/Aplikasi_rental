@@ -40,15 +40,11 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="90dp">
-                    <androidx.cardview.widget.CardView
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/pilih_gmbr"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        app:cardCornerRadius="40dp">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ic_baseline_person_24"/>
-                    </androidx.cardview.widget.CardView>
+                        android:src="@drawable/ic_baseline_person_24"/>
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
@@ -142,6 +138,7 @@
                     app:strokeColor="#939393"
                     android:letterSpacing="0.01"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_setting"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="250dp"
                     android:layout_height="55dp"

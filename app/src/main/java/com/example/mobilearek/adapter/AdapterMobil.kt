@@ -2,7 +2,7 @@ package com.example.mobilearek.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +20,7 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("DEPRECATION")
 class AdapterMobil(var activity: Activity, var data:ArrayList<Mobil>): RecyclerView.Adapter<AdapterMobil.Holder>() {
 
     class Holder(view: View):RecyclerView.ViewHolder(view){
@@ -27,6 +28,7 @@ class AdapterMobil(var activity: Activity, var data:ArrayList<Mobil>): RecyclerV
         val tvHarga = view.findViewById<TextView>(R.id.tv_harga)
         val imgGambar= view.findViewById<ImageView>(R.id.img_mobil)
         val idMobil = view.findViewById<CardView>(R.id.id_mobil)
+        val tvStatus = view.findViewById<TextView>(R.id.tv_status)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -39,23 +41,31 @@ class AdapterMobil(var activity: Activity, var data:ArrayList<Mobil>): RecyclerV
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.tvNama.text = data[position].name
+        holder.tvNama.text = data[position].merk +" "+ data[position].name
         holder.tvHarga.text = NumberFormat.getCurrencyInstance(Locale("in","ID")).format(Integer.valueOf(data[position].harga))
 //        holder.imgGambar.setImageResource(data[position].image)
+        val ststus = data[position].status
+        if(ststus == 1){
+            holder.tvStatus.text="Dipinjam"
+            holder.tvStatus.setTextColor(activity.getResources().getColor(R.color.ColorRed))
+        }else{
+            holder.tvStatus.text="Tersedia"
+        }
         val image = Config.urlData+ data[position].image
         Picasso.get()
             .load(image)
             .placeholder(R.drawable.ic_baseline_arrow_back_24)
             .error(R.drawable.ic_baseline_close_24)
+            .resize(400,400)
             .into(holder.imgGambar)
 
         holder.idMobil.setOnClickListener{
-            val intent = Intent(activity,DetailMobilActivity::class.java)
-
+            val intent = Intent(activity, DetailMobilActivity::class.java)
             val str = Gson().toJson(data[position],Mobil::class.java)
             intent.putExtra("extra",str)
             activity.startActivity(intent)
         }
     }
+
 
 }

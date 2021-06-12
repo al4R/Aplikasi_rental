@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.ProfilImageActivity">
+    <ImageView
+        android:id="@+id/iv_profil"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_baseline_person_24"
+        android:layout_marginTop="30dp"
+        />
+    <TextView
+        android:id="@+id/tv_profil"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:text="Nama Gambar"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_smpn"
+        android:layout_marginTop="50dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Simpan"
+        android:textAllCaps="false"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_btl"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/ColorRed"
+        android:text="Batal"
+        android:textAllCaps="false"/>
+
+
+</LinearLayout>

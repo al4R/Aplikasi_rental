@@ -34,7 +34,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:gravity="center"
-                android:id="@+id/rv_mobil"
+                android:id="@+id/rv_riwayat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

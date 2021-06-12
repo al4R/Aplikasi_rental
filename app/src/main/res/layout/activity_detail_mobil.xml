@@ -170,7 +170,6 @@
                     android:background="@color/colorGrey"/>
 
                 <LinearLayout
-                    android:focusableInTouchMode="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
@@ -181,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tanggal sewa : "/>
                     <TextView
-                        android:id="@+id/et_tglSewa"
+                        android:id="@+id/et_tgl_sewa"
                         android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -199,7 +198,7 @@
                         android:layout_height="wrap_content"
                         android:text="Jam : "/>
                     <TextView
-                        android:id="@+id/et_jamSewa"
+                        android:id="@+id/et_jam_sewa"
                         android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -224,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tanggal Kembali : "/>
                     <TextView
-                        android:id="@+id/et_tglKmb"
+                        android:id="@+id/et_tgl_kmb"
                         android:textSize="14dp"
                         android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
@@ -242,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:text="Jam : "/>
                     <TextView
-                        android:id="@+id/et_jamKmb"
+                        android:id="@+id/et_jam_kmb"
                         android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
