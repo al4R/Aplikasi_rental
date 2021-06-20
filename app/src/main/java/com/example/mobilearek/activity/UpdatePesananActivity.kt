@@ -53,7 +53,7 @@ class UpdatePesananActivity : AppCompatActivity() {
         openTimePicker2()
     }
     btn_update.setOnClickListener {
-        update()
+        updatePesanan()
     }
     }
 
@@ -123,7 +123,6 @@ class UpdatePesananActivity : AppCompatActivity() {
     }
     @SuppressLint("SimpleDateFormat")
     fun update() {
-        getSewa()
         CompositeDisposable().add(Observable.fromCallable { myDb.daoPesan().update(mobil) }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
@@ -175,6 +174,47 @@ class UpdatePesananActivity : AppCompatActivity() {
             mobil.tglKembali = up_tgl_kmb.text.toString()
             mobil.jamSewa = up_jam_sewa.text.toString()
             mobil.jamKembali =up_jam_kmb.text.toString()
+        }
+    }
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+    fun updatePesanan(){
+        val sewa = up_tgl_sewa.text.toString() + up_jam_sewa.text.toString()
+        val kembali = up_tgl_kmb.text.toString() + up_jam_kmb.text.toString()
+        val today = Date()
+        val sdf = SimpleDateFormat("dd MMMM yyyykk.mm")
+        val convert = sdf.parse(sewa)
+        val convert2 = sdf.parse(kembali)
+        sdf.applyPattern("dd MM yyyy kk.mm")
+        val tsewa = sdf.format(convert)
+        val tkmb = sdf.format(convert2)
+        val tglSewa: Date = sdf.parse(tsewa)
+        val tglKmb: Date = sdf.parse(tkmb)
+        val hmobil = mobil.harga.toInt()
+        val hari: Long = (tglKmb.time - tglSewa.time) / 86400000
+        val jam: Long = (tglKmb.time - tglSewa.time) % 86400000 / 3600000
+        val menit: Long = (tglKmb.time - tglSewa.time) % 86400000 % 3600000 / 60000
+        if (tglSewa.time > tglKmb.time) {
+            toast("input tidak benar")
+            return
+        } else if (tglSewa.time <= today.time) {
+            toast("tanggal atau jam sewa salah")
+            return
+        } else if (hari < 1 && jam < 1) {
+            toast("minimal sewa 1 jam")
+            return
+        } else if (hari > 7) {
+            toast("sewa terlalu lama")
+            return
+        } else {
+            val tmenit: Double = menit.toDouble() / 60 * hmobil
+            val total = ((hari * 24) + jam) * hmobil + Math.round(tmenit)
+            up_total.text = ("$total ")
+            mobil.total = up_total.text.toString()
+            mobil.tglSewa = up_tgl_sewa.text.toString()
+            mobil.tglKembali = up_tgl_kmb.text.toString()
+            mobil.jamSewa = up_jam_sewa.text.toString()
+            mobil.jamKembali =up_jam_kmb.text.toString()
+            update()
         }
     }
 }

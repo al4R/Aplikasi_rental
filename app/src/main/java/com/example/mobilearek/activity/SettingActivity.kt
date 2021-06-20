@@ -1,5 +1,6 @@
 package com.example.mobilearek.activity
 
+import android.app.NotificationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilearek.R
@@ -24,10 +26,15 @@ import kotlin.collections.ArrayList
 
 class SettingActivity : AppCompatActivity() {
 
+    private lateinit var notificationManager: NotificationManagerCompat
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+        notificationManager = NotificationManagerCompat.from(this)
+
+//        btn.
     }
 
 

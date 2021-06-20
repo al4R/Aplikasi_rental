@@ -85,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                         s.setString(s.nama,respon.user.name)
                         s.setString(s.email,respon.user.email)
                         s.setString(s.telepon,respon.user.telepon)
+
                         val intent = Intent (this@LoginActivity,MainActivity::class.java)
                         Toast.makeText(this@LoginActivity, "Selamat Datang " + respon.user.name, Toast.LENGTH_SHORT).show()
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -93,6 +94,8 @@ class LoginActivity : AppCompatActivity() {
                     }else{
                         Toast.makeText(this@LoginActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
                     }
+                }else{
+                    Toast.makeText(this@LoginActivity, "Tidak ada respon", Toast.LENGTH_SHORT).show()
                 }
             }
 

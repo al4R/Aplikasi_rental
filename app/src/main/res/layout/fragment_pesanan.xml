@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.PesananFragment">
     <LinearLayout
+        android:id="@+id/lin"
         android:padding="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -17,8 +18,47 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textColor="@color/colorWhite"
-            android:text="Pesanan"/>
-
+            android:text="Pembayaran"/>
     </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nest_scrol"
+        android:layout_below="@+id/lin"
+        android:layout_marginVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/rv_transaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-</LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_empty"
+        android:layout_below="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <include
+            layout="@layout/empty"
+            />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loading_bayar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

@@ -14,6 +14,7 @@ import com.example.mobilearek.app.ApiConfig
 import com.example.mobilearek.model.Mobil
 import com.example.mobilearek.model.ResponModel
 import com.example.mobilearek.room.MyDatabase
+import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
     lateinit var tvAngka : TextView
     lateinit var myDb : MyDatabase
     lateinit var icMobbil : ImageView
+    lateinit var pgBar : ProgressBar
     lateinit var mobil : Mobil
 
     override fun onCreateView(
@@ -53,15 +55,21 @@ class HomeFragment : Fragment() {
             val respon = response.body()
                 if (respon != null) {
                     if (respon.success == 1) {
+                        pgBar.visibility = View.GONE
                         listMobil = respon.mobil
                         val layoutManager = GridLayoutManager (activity,2,GridLayoutManager.VERTICAL,false)
-                        rvMobil.adapter = AdapterMobil(requireActivity(),listMobil)
+                        rvMobil.adapter = activity?.let { AdapterMobil(it,listMobil) }
                         rvMobil.layoutManager = layoutManager
+                    }else{
+                        Toast.makeText(requireActivity(), "Error", Toast.LENGTH_SHORT).show()
                     }
+                }else{
+                    Toast.makeText(requireActivity(), "Tidak ada data mobil", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                pgBar.visibility = View.GONE
                 Toast.makeText(requireActivity(), "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
 
@@ -89,6 +97,7 @@ class HomeFragment : Fragment() {
         idBulat = view.findViewById(R.id.id_bulat)
         tvAngka = view.findViewById(R.id.tv_angka)
         icMobbil = view.findViewById(R.id.ic_mobil)
+        pgBar = view.findViewById(R.id.pg_bar)
 
     }
 
@@ -96,7 +105,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         getMobil()
         check()
-
+        pgBar.visibility = View.VISIBLE
         super.onResume()
     }
 }

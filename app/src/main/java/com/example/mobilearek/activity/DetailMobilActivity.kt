@@ -52,7 +52,7 @@ class DetailMobilActivity : AppCompatActivity() {
             btn_pesan.isEnabled = false
         }
         etTotal.setOnClickListener {
-            cekTgl()
+            cek()
         }
         etTglSewa.setOnClickListener {
             openDatePicker()
@@ -71,12 +71,15 @@ class DetailMobilActivity : AppCompatActivity() {
             val data = myDb.daoPesan().getMobil(mobil.id)
             @Suppress("SENSELESS_COMPARISON")
             if (data == null){
-                insert()
+                getSewa()
             }else {
                 toast("Periksa pesanan")
             }
         }
     }
+    var ts:Long? = null
+    var tk:Long? = null
+    var now:Long?= null
 
     fun init(){
         etTotal = findViewById(R.id.et_total)
@@ -87,24 +90,6 @@ class DetailMobilActivity : AppCompatActivity() {
         s= SharedPref(this)
     }
     fun insert(){
-        if(etTotal.text.toString() == "0" ){
-            toast("Periksa total bayar")
-            return
-        }else if (etTglSewa.text.toString() == "Pilih tanggal") {
-            toast("Tanggal Tidak boleh kosong")
-            return
-        } else if (etJamSewa.text.toString() == "Pilih jam") {
-            toast("Kolom jam tidak boleh kosng")
-            return
-        } else if (etTglKmb.text.toString() == "Pilih tanggal") {
-            toast("Tanggal Tidak boleh kosong")
-            return
-        } else if (etJamKmb.text.toString() == "Pilih jam") {
-            toast("Kolom jam tidak boleh kosng")
-            return
-        } else {
-            getSewa()
-
             CompositeDisposable().add(Observable.fromCallable { myDb.daoPesan().insert(mobil) }
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -117,7 +102,6 @@ class DetailMobilActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
 
-        }
     }
     @SuppressLint("SetTextI18n")
     fun getData(){
@@ -202,9 +186,68 @@ class DetailMobilActivity : AppCompatActivity() {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
 
-    fun cekTgl(){
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    fun getSewa(){
         if (etTglSewa.text.toString() == "Pilih tanggal") {
-            etTglSewa.error = "Atur tanggal sewa"
+            toast("Tanggal Tidak boleh kosong")
+            return
+        } else if (etJamSewa.text.toString() == "Pilih jam") {
+            toast("Kolom jam tidak boleh kosng")
+            return
+        } else if (etTglKmb.text.toString() == "Pilih tanggal") {
+            toast("Tanggal Tidak boleh kosong")
+            return
+        } else {
+            val sewa = etTglSewa.text.toString() + etJamSewa.text.toString()
+            val kembali = etTglKmb.text.toString() + etJamKmb.text.toString()
+            val today = Date()
+            val sdf = SimpleDateFormat("dd MMMM yyyykk.mm")
+            val convert = sdf.parse(sewa)
+            val convert2 = sdf.parse(kembali)
+            sdf.applyPattern("dd MM yyyy kk.mm")
+            val tsewa = sdf.format(convert)
+            val tkmb = sdf.format(convert2)
+            val tglSewa: Date = sdf.parse(tsewa)
+            val tglKmb: Date = sdf.parse(tkmb)
+            val hmobil = mobil.harga.toInt()
+            val hari: Long = (tglKmb.time - tglSewa.time) / 86400000
+            val jam: Long = (tglKmb.time - tglSewa.time) % 86400000 / 3600000
+            val menit: Long = (tglKmb.time - tglSewa.time) % 86400000 % 3600000 / 60000
+            ts = tglSewa.time
+            tk = tglKmb.time
+            now = today.time
+            if (etJamKmb.text.toString() == "Pilih jam") {
+                toast("Kolom jam tidak boleh kosng")
+                return
+            } else if (tglSewa.time > tglKmb.time) {
+                toast("input tidak benar")
+                return
+            } else if (tglSewa.time <= today.time) {
+                toast("tanggal atau jam sewa salah")
+                return
+            } else if (hari < 1 && jam < 1) {
+                toast("minimal sewa 1 jam")
+                return
+            } else if (hari > 7) {
+                toast("sewa terlalu lama")
+                return
+            } else {
+                val tmenit: Double = menit.toDouble() / 60 * hmobil
+                val total = ((hari * 24) + jam) * hmobil + Math.round(tmenit)
+                etTotal.text = ("$total ")
+                mobil.total = etTotal.text.toString()
+                mobil.tglSewa = etTglSewa.text.toString()
+                mobil.tglKembali = etTglKmb.text.toString()
+                mobil.jamSewa = etJamSewa.text.toString()
+                mobil.jamKembali = etJamKmb.text.toString()
+                insert()
+            }
+        }
+    }
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    fun cek(){
+        if (etTglSewa.text.toString() == "Pilih tanggal") {
+            toast("Tanggal Tidak boleh kosong")
             return
         } else if (etJamSewa.text.toString() == "Pilih jam") {
             toast("Kolom jam tidak boleh kosng")
@@ -216,51 +259,46 @@ class DetailMobilActivity : AppCompatActivity() {
             toast("Kolom jam tidak boleh kosng")
             return
         }else {
-            getSewa()
-        }
-    }
-
-    @SuppressLint("SimpleDateFormat", "SetTextI18n")
-    fun getSewa(){
-        val sewa = etTglSewa.text.toString() + etJamSewa.text.toString()
-        val kembali = etTglKmb.text.toString() + etJamKmb.text.toString()
-        val today = Date()
-        val sdf = SimpleDateFormat("dd MMMM yyyykk.mm")
-        val convert = sdf.parse(sewa)
-        val convert2 = sdf.parse(kembali)
-        sdf.applyPattern("dd MM yyyy kk.mm")
-        val tsewa = sdf.format(convert)
-        val tkmb = sdf.format(convert2)
-        val tglSewa: Date = sdf.parse(tsewa)
-        val tglKmb: Date = sdf.parse(tkmb)
-        val hmobil = mobil.harga.toInt()
-        val hari: Long = (tglKmb.time - tglSewa.time) / 86400000
-        val jam: Long = (tglKmb.time - tglSewa.time) % 86400000 / 3600000
-        val menit: Long = (tglKmb.time - tglSewa.time) % 86400000 % 3600000 / 60000
-       if (tglSewa.time > tglKmb.time) {
-            toast("input tidak benar")
-            return
-        } else if (tglSewa.time <= today.time) {
-            toast("tanggal atau jam sewa salah")
-            return
-        } else if (hari < 1 && jam < 1) {
-            toast("minimal sewa 1 jam")
-            return
-        } else if (hari > 7) {
-            toast("sewa terlalu lama")
-            return
-        } else {
-            val tmenit: Double = menit.toDouble() / 60 * hmobil
-           val total = ((hari * 24) + jam) * hmobil + Math.round(tmenit)
-           etTotal.text = ("$total ")
-
-
-           mobil.total = etTotal.text.toString()
-           mobil.tglSewa = etTglSewa.text.toString()
-           mobil.tglKembali = etTglKmb.text.toString()
-           mobil.jamSewa = etJamSewa.text.toString()
-           mobil.jamKembali = etJamKmb.text.toString()
-
+            val sewa = etTglSewa.text.toString() + etJamSewa.text.toString()
+            val kembali = etTglKmb.text.toString() + etJamKmb.text.toString()
+            val today = Date()
+            val sdf = SimpleDateFormat("dd MMMM yyyykk.mm")
+            val convert = sdf.parse(sewa)
+            val convert2 = sdf.parse(kembali)
+            sdf.applyPattern("dd MM yyyy kk.mm")
+            val tsewa = sdf.format(convert)
+            val tkmb = sdf.format(convert2)
+            val tglSewa: Date = sdf.parse(tsewa)
+            val tglKmb: Date = sdf.parse(tkmb)
+            val hmobil = mobil.harga.toInt()
+            val hari: Long = (tglKmb.time - tglSewa.time) / 86400000
+            val jam: Long = (tglKmb.time - tglSewa.time) % 86400000 / 3600000
+            val menit: Long = (tglKmb.time - tglSewa.time) % 86400000 % 3600000 / 60000
+            ts = tglSewa.time
+            tk = tglKmb.time
+            now = today.time
+            if (tglSewa.time > tglKmb.time) {
+                toast("input tidak benar")
+                return
+            } else if (tglSewa.time <= today.time) {
+                toast("tanggal atau jam sewa salah")
+                return
+            } else if (hari < 1 && jam < 1) {
+                toast("minimal sewa 1 jam")
+                return
+            } else if (hari > 7) {
+                toast("sewa terlalu lama")
+                return
+            } else {
+                val tmenit: Double = menit.toDouble() / 60 * hmobil
+                val total = ((hari * 24) + jam) * hmobil + Math.round(tmenit)
+                etTotal.text = ("$total ")
+                mobil.total = etTotal.text.toString()
+                mobil.tglSewa = etTglSewa.text.toString()
+                mobil.tglKembali = etTglKmb.text.toString()
+                mobil.jamSewa = etJamSewa.text.toString()
+                mobil.jamKembali = etJamKmb.text.toString()
+            }
         }
     }
 

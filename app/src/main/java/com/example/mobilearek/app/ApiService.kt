@@ -3,7 +3,7 @@ package com.example.mobilearek.app
 
 
 import com.example.mobilearek.model.ResponModel
-import com.example.mobilearek.model.Transaksi
+import com.example.mobilearek.model.Pesanan
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -38,7 +38,7 @@ interface ApiService {
 
     @POST("pesan")
     fun pesan(
-        @Body data :Transaksi
+        @Body data :Pesanan
     ): Call<ResponModel>
 
     @FormUrlEncoded
@@ -57,4 +57,30 @@ interface ApiService {
         fun getRiwayat(
             @Path("id") id: Int
         ): Call<ResponModel>
+
+    @GET("berjalan/{id}")
+    fun getTransaksi(
+        @Path("id") id: Int
+    ): Call<ResponModel>
+
+    @Multipart
+    @POST("upload/{id}")
+    fun upload(
+        @Path("id") id: Int,
+        @Part bukti_tf: MultipartBody.Part? = null
+    ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @POST("updatemobil/{id}")
+    fun updatemobil(
+        @Path("id") id: Int,
+        @Field("status") status: Int
+    ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @POST("cancel/{id}")
+    fun cancel(
+        @Path("id") id: Int,
+        @Field("cancel") status: Int
+    ): Call<ResponModel>
 }

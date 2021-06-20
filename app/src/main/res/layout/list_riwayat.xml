@@ -1,18 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/riwayat"
-    android:layout_width="310dp"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="20dp"
     android:layout_height="120dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="10dp">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/rw_total"
+    android:layout_gravity="center"
+    android:layout_marginVertical="5dp">
+    <RelativeLayout
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/kode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="total"/>
-    </LinearLayout>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/rw_kode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_btn_color"
+                android:textSize="16dp"
+                android:text="KD/TRN-210613/594"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pesan"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/kode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/ColorBlack"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dipesan tanggal : "/>
+            <TextView
+                android:id="@+id/tanggal_pesan"
+                android:textColor="@color/bg_btn_color"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021-06-13 16:47:07"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@+id/pesan"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/ColorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Bayar : "/>
+            <TextView
+                android:id="@+id/rw_total"
+                android:textSize="12dp"
+                android:textColor="@color/bg_btn_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="13dp"
+                android:textColor="@color/ColorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status : "/>
+            <TextView
+                android:textSize="13dp"
+                android:textColor="@color/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selesai"/>
+        </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -89,5 +89,10 @@
             android:letterSpacing="0.01" />
 
     </LinearLayout>
-
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progres_bar"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
 </RelativeLayout>

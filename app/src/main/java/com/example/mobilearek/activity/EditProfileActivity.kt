@@ -16,6 +16,8 @@ import com.example.mobilearek.model.ResponModel
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.et_email
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_profil_image.*
+import kotlinx.android.synthetic.main.toolbar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,11 +55,20 @@ class EditProfileActivity : AppCompatActivity() {
     }
     fun mainButton(){
         btn_simpan.setOnClickListener {
+            progres_bar.visibility  = View.VISIBLE
             editUser()
         }
         btn_batal.setOnClickListener {
             onBackPressed()
         }
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = "Edit profil"
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
     fun editUser(){
         if(et_email.text.toString().isEmpty())
@@ -85,7 +96,7 @@ class EditProfileActivity : AppCompatActivity() {
                 val respon = response.body()
                 if (respon != null) {
                     if (respon.success == 1){
-                        s.setStatusLogin(true)
+                        progres_bar.visibility  = View.GONE
                         s.setUser(respon.user)
                         s.setString(s.nama,respon.user.name)
                         s.setString(s.email,respon.user.email)
@@ -95,10 +106,13 @@ class EditProfileActivity : AppCompatActivity() {
                     }else{
                         Toast.makeText(this@EditProfileActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
                     }
+                }else{
+                    Toast.makeText(this@EditProfileActivity, "Tidak ada respon", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                progres_bar.visibility  = View.GONE
                 Toast.makeText(this@EditProfileActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
 

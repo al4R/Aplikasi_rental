@@ -8,7 +8,7 @@
     <item
         android:id="@+id/navigation_pesanan"
         android:icon="@drawable/ic_baseline_content_copy_24"
-        android:title="Pesanan"/>
+        android:title="Pembayaran"/>
     <item
         android:id="@+id/navigation_riwayat"
         android:icon="@drawable/ic_history"

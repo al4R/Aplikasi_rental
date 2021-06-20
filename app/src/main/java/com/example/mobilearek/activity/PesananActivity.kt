@@ -2,6 +2,7 @@ package com.example.mobilearek.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilearek.R
@@ -10,6 +11,8 @@ import com.example.mobilearek.helper.SharedPref
 import com.example.mobilearek.model.Mobil
 import com.example.mobilearek.room.DaoPesanan
 import com.example.mobilearek.room.MyDatabase
+import kotlinx.android.synthetic.main.activity_pesanan.*
+import kotlinx.android.synthetic.main.empty.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
@@ -64,8 +67,14 @@ class PesananActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        val data = myDb.daoPesan().getAll()
+        if(data.isEmpty()){
+            empty.visibility = View.VISIBLE
+            scrol_pesan.visibility = View.GONE
+        }else{
+            displayMobil()
+        }
         super.onResume()
-        displayMobil()
     }
 
 }

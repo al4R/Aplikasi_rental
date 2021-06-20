@@ -1,18 +1,20 @@
 package com.example.mobilearek.model
 
 class Transaksi {
-    lateinit var user_id:String
-    lateinit var tgl_order:String
-    lateinit var total_harga:String
-    lateinit var transfer:String
-    lateinit var tgl_sewa:String
-    lateinit var tgl_akhir_sewa:String
-    lateinit var lama_sewa:String
-    var mobils = ArrayList<Item>()
-    class Item{
-        lateinit var id:String
-        lateinit var harga_sewa:String
-
-    }
-
+    var id=0
+    var user_id=""
+    var kode_tran=""
+    var tgl_order=""
+    var total_harga=""
+    var status_tr=0
+    var transfer=""
+    var tgl_sewa=""
+    var tgl_akhir_sewa=""
+    var bukti_tf =""
+    var lama_sewa=""
+    var status_bayar=0
+    var expired_at=""
+    var created_at=""
+    var updated_at=""
+    var details = DetailTransaksi()
 }

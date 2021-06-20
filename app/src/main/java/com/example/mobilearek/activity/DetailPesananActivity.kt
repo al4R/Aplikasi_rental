@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.mobilearek.MainActivity
@@ -12,15 +13,21 @@ import com.example.mobilearek.app.ApiConfig
 import com.example.mobilearek.helper.SharedPref
 import com.example.mobilearek.model.Mobil
 import com.example.mobilearek.model.ResponModel
-import com.example.mobilearek.model.Transaksi
+import com.example.mobilearek.model.Pesanan
 import com.example.mobilearek.room.MyDatabase
 import com.example.mobilearek.util.Config
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail_pesanan.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.list_pesanan.tv_mobil
 import kotlinx.android.synthetic.main.toolbar.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 
@@ -30,10 +37,11 @@ class DetailPesananActivity : AppCompatActivity() {
     lateinit var tvSpiner: TextView
     lateinit var ivBayar: ImageView
     lateinit var myDb:MyDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_pesanan)
-
+        myDb = MyDatabase.getInstance(this)!!
 
         init()
         spiner()
@@ -53,19 +61,17 @@ class DetailPesananActivity : AppCompatActivity() {
         val user = SharedPref(this).getUser()
         val data = intent.getStringExtra("extra")
         mobil = Gson().fromJson<Mobil>(data, Mobil::class.java)
-        val mobils = ArrayList<Transaksi.Item>()
-        val item = Transaksi.Item()
-        item.id = ""+mobil.id
-        item.harga_sewa= ""+mobil.harga
-        mobils.add(item)
-        val sewa = Transaksi()
+        val sewa = Pesanan()
         sewa.user_id = ""+user!!.id
         sewa.tgl_order = "now"
         sewa.total_harga = ""+mobil.total
         sewa.tgl_sewa=""+mobil.tglSewa+mobil.jamSewa
         sewa.tgl_akhir_sewa=""+mobil.tglKembali+mobil.jamKembali
+        sewa.transfer = ""+tvSpiner.text.toString()
         sewa.lama_sewa=""+mobil.jamSewa
-        sewa.mobils = mobils
+        sewa.id =""+mobil.id
+        sewa.harga_sewa=""+mobil.harga
+
 
         ApiConfig.instanceRetrofit.pesan(sewa).enqueue(object : retrofit2.Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
@@ -73,7 +79,31 @@ class DetailPesananActivity : AppCompatActivity() {
                 val respon = response.body()
                 if (respon != null) {
                     if (respon.success == 1){
+                        updateMobil()
+                    }else{
                         progres_bar.visibility = View.GONE
+                        Toast.makeText(this@DetailPesananActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                progres_bar.visibility = View.GONE
+                Toast.makeText(this@DetailPesananActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    fun updateMobil(){
+        val id = mobil.id
+        ApiConfig.instanceRetrofit.updatemobil(id,1).enqueue(object : retrofit2.Callback<ResponModel> {
+            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+                val respon = response.body()
+                if (respon != null) {
+                    if (respon.success == 1){
+                        progres_bar.visibility = View.GONE
+                        delete()
                         val intent = Intent (this@DetailPesananActivity, MainActivity::class.java)
                         Toast.makeText(this@DetailPesananActivity, "Berhasil ", Toast.LENGTH_SHORT).show()
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -90,10 +120,18 @@ class DetailPesananActivity : AppCompatActivity() {
                 progres_bar.visibility = View.GONE
                 Toast.makeText(this@DetailPesananActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
+    fun delete(){
+        CompositeDisposable().add(Observable.fromCallable { myDb.daoPesan().delete(mobil) }
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+
+                Log.d("respons", "data deleted")
+            })
+    }
     fun spiner(){
         val option = arrayOf("Pilih metode bayar","Dana","OVO","Bank BCA","Bank BRI","Bank Mandiri")
 

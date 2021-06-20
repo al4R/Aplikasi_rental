@@ -59,13 +59,18 @@ class AkunFragment : Fragment() {
             tvNama.text = user.name
             tvEmail.text = user.email
             tvTelepon.text = user.telepon
-            val image = Config.urlProfil + user.image
-            Picasso.get()
-                .load(image)
-                .placeholder(R.drawable.ic_baseline_arrow_back_24)
-                .error(R.drawable.ic_baseline_close_24)
-                .resize(400, 400)
-                .into(btnProfil)
+            if(user.image == ""){
+             btnProfil.setImageResource(R.drawable.ic_baseline_person_24)
+             return
+            }else{
+                val image = Config.urlProfil + user.image
+                Picasso.get()
+                    .load(image)
+                    .placeholder(R.drawable.ic_baseline_arrow_back_24)
+                    .error(R.drawable.ic_baseline_close_24)
+                    .resize(400, 400)
+                    .into(btnProfil)
+            }
         }
     }
     fun mainbutton(){
