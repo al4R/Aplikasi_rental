@@ -133,6 +133,7 @@
                     app:strokeColor="#939393"
                     android:letterSpacing="0.01"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edt_pass"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="250dp"
                     android:layout_height="55dp"
@@ -141,21 +142,6 @@
                     android:fontFamily="@font/font_roboto"
                     android:textAllCaps="false"
                     app:icon="@drawable/ic_baseline_person_24"
-                    app:iconTint="@color/iconbtn"
-                    android:textColor="@color/textbtn"
-                    android:backgroundTint="@color/colorWhite"
-                    app:strokeColor="#939393"
-                    android:letterSpacing="0.01"/>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_setting"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="250dp"
-                    android:layout_height="55dp"
-                    android:textAlignment="viewStart"
-                    android:text="Pengaturan"
-                    android:fontFamily="@font/font_roboto"
-                    android:textAllCaps="false"
-                    app:icon="@drawable/ic_baseline_settings_24"
                     app:iconTint="@color/iconbtn"
                     android:textColor="@color/textbtn"
                     android:backgroundTint="@color/colorWhite"

@@ -53,6 +53,17 @@ interface ApiService {
     @GET("mobil")
     fun getMobil(): Call<ResponModel>
 
+
+    @POST("search/{q}")
+    fun searchMobil(
+        @Path("q") q:String
+    ): Call<ResponModel>
+
+    @GET("mobilpage")
+    fun getmobilpage(
+        @QueryMap param : HashMap <String, String>
+    ):Call<ResponModel>
+
     @GET("history/{id}")
         fun getRiwayat(
             @Path("id") id: Int
@@ -83,4 +94,28 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("cancel") status: Int
     ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @POST("upass/{id}")
+    fun editPass(
+        @Path("id") id: Int,
+        @Field("password") password: String,
+        @Field("new_password") new_password: String
+    ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @POST("lupapass")
+    fun lupapass(
+        @Field("email") email :String,
+        @Field("nik") nik :String
+    ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @POST("resetpass/{id}")
+    fun resetpass(
+        @Path("id") id: Int,
+        @Field("password") password: String
+    ): Call<ResponModel>
+
+
 }

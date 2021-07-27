@@ -66,7 +66,6 @@
                 android:text="200000"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -83,6 +82,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Selesai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/rw_lanjut"
+                android:textSize="13dp"
+                android:textColor="@color/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lanjutkan"/>
         </LinearLayout>
     </RelativeLayout>
 

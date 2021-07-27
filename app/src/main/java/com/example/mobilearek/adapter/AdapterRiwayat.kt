@@ -26,6 +26,7 @@ class AdapterRiwayat( var data : ArrayList<Transaksi>,var listener: Listeners):R
         val tvtglPesan = view.findViewById<TextView>(R.id.tanggal_pesan)
         val tvTotal = view.findViewById<TextView>(R.id.rw_total)
         val cdRiwayat = view.findViewById<CardView>(R.id.riwayat)
+        val lanjut = view.findViewById<TextView>(R.id.rw_lanjut)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_riwayat,parent,false)
@@ -41,7 +42,7 @@ class AdapterRiwayat( var data : ArrayList<Transaksi>,var listener: Listeners):R
         holder.tvtglPesan.text = data.tgl_order
         holder.tvKode.text = data.kode_tran
         holder.tvTotal.text = data.total_harga
-        holder.cdRiwayat.setOnClickListener {
+        holder.lanjut.setOnClickListener {
             listener.onClicked(data)
         }
 

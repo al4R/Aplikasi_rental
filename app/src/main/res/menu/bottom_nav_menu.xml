@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="home" />
     <item
+        android:id="@+id/navigation_cari"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Pencarian"/>
+    <item
         android:id="@+id/navigation_pesanan"
         android:icon="@drawable/ic_baseline_content_copy_24"
         android:title="Pembayaran"/>

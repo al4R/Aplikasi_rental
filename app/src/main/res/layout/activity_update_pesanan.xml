@@ -70,243 +70,222 @@
                                 android:text="Honda "
                                 android:textColor="@color/bg_btn_color"/>
                         </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2">
-                            <TextView
-                                android:textSize="14dp"
-                                android:textColor="@color/ColorBlack"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Tahun : "/>
-                            <TextView
-                                android:id="@+id/up_tahun"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2017"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
+
                     </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="14dp"
+                        android:textColor="@color/ColorBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tahun : "/>
+                    <TextView
+                        android:id="@+id/up_tahun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017"
+                        android:textColor="@color/bg_btn_color"/>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="14dp"
+                        android:textColor="@color/ColorBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Harga Sewa : "/>
+                    <TextView
+                        android:id="@+id/up_harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 23000/jam "
+                        android:textColor="@color/bg_btn_color"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="14dp"
+                        android:textColor="@color/ColorBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transmisi : "/>
+                    <TextView
+                        android:id="@+id/up_transmisi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manual"
+                        android:textColor="@color/bg_btn_color"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="14dp"
+                        android:textColor="@color/ColorBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kapasitas: "/>
+                    <TextView
+                        android:id="@+id/up_kapasitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 orang"
+                        android:textColor="@color/bg_btn_color"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGrey"/>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="3">
-                            <TextView
-                                android:textSize="14dp"
-                                android:textColor="@color/ColorBlack"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Harga Sewa : "/>
-                            <TextView
-                                android:id="@+id/up_harga"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Rp. 23000/jam "
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
+                            android:textColor="@color/ColorBlack"
+                            android:text="Pilih tanggal sewa"/>
+                        <Button
+                            android:id="@+id/btn_pilihSewa"
+                            android:layout_gravity="center"
+                            android:layout_width="70dp"
+                            android:layout_height="45dp"
+                            android:text="Pilih"
+                            android:textAllCaps="false"/>
                     </LinearLayout>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": "
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/ColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/up_sewa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp" />
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGrey"/>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2">
-                            <TextView
-                                android:textSize="14dp"
-                                android:textColor="@color/ColorBlack"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Transmisi : "/>
-                            <TextView
-                                android:id="@+id/up_transmisi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Manual"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2">
-                            <TextView
-                                android:textSize="14dp"
-                                android:textColor="@color/ColorBlack"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Kapasitas: "/>
-                            <TextView
-                                android:id="@+id/up_kapasitas"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4 orang"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
+                            android:textColor="@color/ColorBlack"
+                            android:text="Pilih tanggal akhir sewa"/>
+                        <Button
+                            android:id="@+id/btn_pilihAkhir"
+                            android:layout_gravity="center"
+                            android:layout_width="70dp"
+                            android:layout_height="45dp"
+                            android:text="Pilih"
+                            android:textAllCaps="false"/>
                     </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorGrey"/>
-
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:textColor="@color/ColorBlack"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tanggal sewa : "/>
+                        android:text=": "
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/ColorBlack"/>
                     <TextView
-                        android:id="@+id/up_tgl_sewa"
-                        android:textColor="@color/bg_btn_color"
+                        android:id="@+id/up_kembali"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="Pilih tanggal" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jam : "/>
-                    <TextView
-                        android:id="@+id/up_jam_sewa"
-                        android:textColor="@color/bg_btn_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="Pilih jam"/>
+                        android:layout_gravity="center_vertical"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorGrey"/>
-                <LinearLayout
+                    android:gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tanggal Kembali : "/>
-                    <TextView
-                        android:id="@+id/up_tgl_kmb"
-                        android:textSize="14dp"
-                        android:textColor="@color/bg_btn_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih tanggal"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jam : "/>
-                    <TextView
-                        android:id="@+id/up_jam_kmb"
-                        android:textColor="@color/bg_btn_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="Pilih jam"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total bayar: "/>
-                    <TextView
-                        android:id="@+id/up_statusCek"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/bg_btn_color"
-                        android:text="Rp "
-                        />
-                    <TextView
-                        android:id="@+id/up_total"
-                        android:textColor="@color/bg_btn_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="0"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorGrey"/>
-                <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="17dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/ColorRed"
-                        android:text="Catatan :"/>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1) "/>
-                    <TextView
-                        android:textColor="@color/ColorBlack"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2) "/>
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/ColorBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="total bayar: "/>
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/bg_btn_color"
+                            android:text="Rp "
+                            />
+                        <TextView
+                            android:id="@+id/up_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/bg_btn_color"
+                            android:text="0"
+                            />
+                    </LinearLayout>
+
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGrey"/>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

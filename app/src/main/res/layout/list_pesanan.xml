@@ -5,32 +5,22 @@
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="7dp"
-    android:layout_marginHorizontal="7dp"
-    android:layout_marginVertical="7dp"
-    app:cardCornerRadius="10dp">
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp">
     <RelativeLayout
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:id="@+id/tv_mobil"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/ColorBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mobil"/>
-        <TextView
-            android:id="@+id/tv_status"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Belum dibayar"
-            android:textColor="@color/ColorRed"
-            android:textSize="15dp"/>
-
 
         <LinearLayout
-            android:layout_marginTop="25dp"
+            android:layout_below="@+id/tv_mobil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
@@ -58,11 +48,20 @@
             android:id="@+id/tv_cancel"
             android:layout_marginRight="10dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:textColor="@color/ColorRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancel"/>
+        <TextView
+            android:id="@+id/tv_lanjut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:text="Lanjutkan"
+            android:textColor="@color/green"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

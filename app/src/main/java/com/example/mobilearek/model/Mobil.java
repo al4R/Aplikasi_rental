@@ -12,7 +12,7 @@ public class Mobil{
     public int idTb;
 
     public int id;
-    public String name;
+    public String model;
     public String harga;
     public String image;
     public String merk;
@@ -27,8 +27,9 @@ public class Mobil{
 
     public String total;
     public String tglSewa;
-    public String jamSewa;
     public String tglKembali;
-    public String jamKembali;
+    public String TglS;
+    public String TglK;
+    public String lamaSewa;
 
 }

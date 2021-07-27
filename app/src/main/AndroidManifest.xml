@@ -7,12 +7,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_asset3"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DetailTransaksiActivity"></activity>
+        <activity android:name=".activity.ResetPasswordActivity"></activity>
+        <activity android:name=".activity.LupaPasswordActivity" />
+
+        <activity android:name=".activity.BokingActivity" />
+        <activity android:name=".activity.DetailTransaksiActivity" />
         <activity android:name=".activity.EditPasswordActivity" />
         <activity android:name=".activity.ProfilImageActivity" />
         <activity android:name=".activity.UpdatePesananActivity" />
@@ -24,7 +28,8 @@
         <activity android:name=".activity.DetailMobilActivity" />
         <activity android:name=".activity.DaftarActivity" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

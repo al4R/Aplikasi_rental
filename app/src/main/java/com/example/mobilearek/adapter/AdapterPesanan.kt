@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilearek.R
@@ -28,7 +29,8 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
         val tvStatus = view.findViewById<TextView>(R.id.tv_status)
         val tvUpdate = view.findViewById<TextView>(R.id.tv_update)
         val tvCancel = view.findViewById<TextView>(R.id.tv_cancel)
-        val idTr = view.findViewById<CardView>(R.id.id_tr)
+        val tvLanjut = view.findViewById<TextView>(R.id.tv_lanjut)
+//        val idTr = view.findViewById<CardView>(R.id.id_tr)
 
 
     }
@@ -42,10 +44,10 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.tvMobil.text = data[position].merk+" "+data[position].name
+        holder.tvMobil.text = data[position].merk+" "+data[position].model
         holder.tvTotal.text = "Rp."+data[position].total
 
-        holder.idTr.setOnClickListener{
+        holder.tvLanjut.setOnClickListener{
             val intent = Intent(activity, DetailPesananActivity::class.java)
             val str = Gson().toJson(data[position],Mobil::class.java)
             intent.putExtra("extra",str)
@@ -60,8 +62,17 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
         }
 
         holder.tvCancel.setOnClickListener {
-           delete(data[position])
-            listener.onDelete(position)
+            val alert = AlertDialog.Builder(activity)
+            alert.setTitle("Apakah anda yakin !")
+            alert.setMessage("Ingin membatalkan pesanan ?")
+            alert.setPositiveButton("Yes",{  _, _->
+                delete(data[position])
+                listener.onDelete(position)
+            })
+            alert.setNegativeButton("No",{ _, _->
+
+            })
+            alert.show()
         }
     }
     interface Listeners{

@@ -2,7 +2,6 @@ package com.example.mobilearek.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,22 +10,18 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mobilearek.R
-import com.example.mobilearek.activity.DetailRiwayatActivity
 import com.example.mobilearek.activity.DetailTransaksiActivity
 import com.example.mobilearek.adapter.AdapterPembayaran
-import com.example.mobilearek.adapter.AdapterRiwayat
 import com.example.mobilearek.app.ApiConfig
 import com.example.mobilearek.helper.SharedPref
-import com.example.mobilearek.model.DetailTransaksi
 import com.example.mobilearek.model.ResponModel
 import com.example.mobilearek.model.Transaksi
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_pesanan.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,20 +32,33 @@ class PesananFragment : Fragment() {
     private lateinit var Scrv : NestedScrollView
     private lateinit var Empty : LinearLayout
     private lateinit var Pb : ProgressBar
+    private lateinit var Swp : SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_pesanan, container, false)
+
         init(view)
+        refresh()
         return view
     }
+
+    private fun refresh() {
+        Swp.setOnRefreshListener {
+            getTransaksi()
+            Toast.makeText(activity, "Refresh", Toast.LENGTH_SHORT).show()
+            Swp.isRefreshing = false
+        }
+    }
+
     fun init(view: View) {
         rvTransaksi = view.findViewById(R.id.rv_transaksi)
         Scrv = view.findViewById(R.id.nest_scrol)
         Empty = view.findViewById(R.id.ll_empty)
         Pb = view.findViewById(R.id.loading_bayar)
+        Swp = view.findViewById(R.id.swipe)
     }
     fun getTransaksi(){
         Pb.visibility = View.VISIBLE

@@ -19,7 +19,7 @@
                 android:id="@+id/img_mobil"
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
-                android:src="@drawable/brio"/>
+                android:src="@drawable/ic_baseline_directions_car_24"/>
         </LinearLayout>
 
 

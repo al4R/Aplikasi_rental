@@ -8,7 +8,7 @@ class Pesanan {
     lateinit var tgl_sewa:String
     lateinit var tgl_akhir_sewa:String
     lateinit var lama_sewa:String
-    lateinit var id:String
+    lateinit var mobil_id:String
     lateinit var harga_sewa:String
 
 

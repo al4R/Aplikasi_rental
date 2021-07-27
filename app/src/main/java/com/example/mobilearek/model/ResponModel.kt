@@ -6,5 +6,7 @@ class ResponModel {
     var user = User()
     var mobil:ArrayList<Mobil> = ArrayList()
     var transaksi:ArrayList<Transaksi> = ArrayList()
+    var page = Page()
+    var data :ArrayList<Mobil> = ArrayList()
     
 }

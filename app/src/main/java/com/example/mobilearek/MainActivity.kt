@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val fragmentAkun: Fragment = AkunFragment ()
     private val fragmentBaru: Fragment = AkunBaruFragment ()
     private val fragmentPesanan: Fragment = PesananFragment ()
+    private val fragmentPencarian: Fragment = PencarianFragment ()
     private val fm : FragmentManager = supportFragmentManager
     private var active: Fragment = fragmentHome
     private lateinit var menu: Menu
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     fun setUpBottomNav(){
         fm.beginTransaction().add(R.id.container,fragmentHome).show(fragmentHome).commit()
         fm.beginTransaction().add(R.id.container,fragmentPesanan).hide(fragmentPesanan).commit()
+        fm.beginTransaction().add(R.id.container,fragmentPencarian).hide(fragmentPencarian).commit()
         fm.beginTransaction().add(R.id.container,fragmentRwt).hide(fragmentRwt).commit()
         fm.beginTransaction().add(R.id.container,fragmentAkun).hide(fragmentAkun).commit()
         fm.beginTransaction().add(R.id.container,fragmentBaru).hide(fragmentBaru).commit()
@@ -58,17 +60,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home ->{
                     callFragment(0,fragmentHome)
                 }
+                R.id.navigation_cari ->{
+                    callFragment(1,fragmentPencarian)
+                }
                 R.id.navigation_pesanan->{
-                    callFragment(1,fragmentPesanan)
+                    callFragment(2,fragmentPesanan)
                 }
                 R.id.navigation_riwayat ->{
-                    callFragment(2,fragmentRwt)
+                    callFragment(3,fragmentRwt)
                 }
                 R.id.navigation_akun ->{
                     if (s.getStatusLogin()){
-                        callFragment( 3,fragmentAkun)
+                        callFragment( 4,fragmentAkun)
                     }else{
-                        callFragment(3,fragmentBaru)
+                        callFragment(4,fragmentBaru)
                     }
                 }
             }

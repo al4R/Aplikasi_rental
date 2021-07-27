@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.mobilearek.MainActivity
 import com.example.mobilearek.R
+import com.example.mobilearek.activity.EditPasswordActivity
 import com.example.mobilearek.activity.EditProfileActivity
 import com.example.mobilearek.activity.ProfilImageActivity
 import com.example.mobilearek.activity.SettingActivity
@@ -34,8 +35,8 @@ class AkunFragment : Fragment() {
     private lateinit var tvNama:TextView
     private lateinit var tvEmail:TextView
     private lateinit var tvTelepon:TextView
-    private lateinit var btnSetting:Button
     private lateinit var btnProfil:ImageView
+    private lateinit var btnPass:Button
 
 
     override fun onCreateView(
@@ -84,12 +85,12 @@ class AkunFragment : Fragment() {
             val intent = Intent (activity, EditProfileActivity::class.java)
             startActivity(intent)
         }
-        btnSetting.setOnClickListener {
-            val intent = Intent (activity, SettingActivity::class.java)
-            startActivity(intent)
-        }
         btnProfil.setOnClickListener {
             val intent = Intent (activity, ProfilImageActivity::class.java)
+            startActivity(intent)
+        }
+        btnPass.setOnClickListener {
+            val intent = Intent (activity, EditPasswordActivity::class.java)
             startActivity(intent)
         }
     }
@@ -101,8 +102,8 @@ class AkunFragment : Fragment() {
         tvEmail = view.findViewById(R.id.tv_email)
         tvTelepon = view.findViewById(R.id.tv_telepon)
         btnEditPr=view.findViewById(R.id.btn_editProfile)
-        btnSetting = view.findViewById(R.id.btn_setting)
         btnProfil=view.findViewById(R.id.pilih_gmbr)
+        btnPass=view.findViewById(R.id.btn_edt_pass)
 
     }
 

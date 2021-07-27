@@ -65,11 +65,11 @@ class DetailPesananActivity : AppCompatActivity() {
         sewa.user_id = ""+user!!.id
         sewa.tgl_order = "now"
         sewa.total_harga = ""+mobil.total
-        sewa.tgl_sewa=""+mobil.tglSewa+mobil.jamSewa
-        sewa.tgl_akhir_sewa=""+mobil.tglKembali+mobil.jamKembali
+        sewa.tgl_sewa=""+mobil.tglSewa
+        sewa.tgl_akhir_sewa=""+mobil.tglKembali
         sewa.transfer = ""+tvSpiner.text.toString()
-        sewa.lama_sewa=""+mobil.jamSewa
-        sewa.id =""+mobil.id
+        sewa.lama_sewa=""+mobil.lamaSewa
+        sewa.mobil_id =""+mobil.id
         sewa.harga_sewa=""+mobil.harga
 
 
@@ -97,7 +97,7 @@ class DetailPesananActivity : AppCompatActivity() {
 
     fun updateMobil(){
         val id = mobil.id
-        ApiConfig.instanceRetrofit.updatemobil(id,1).enqueue(object : retrofit2.Callback<ResponModel> {
+        ApiConfig.instanceRetrofit.updatemobil(id,2).enqueue(object : retrofit2.Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 val respon = response.body()
                 if (respon != null) {
@@ -105,7 +105,7 @@ class DetailPesananActivity : AppCompatActivity() {
                         progres_bar.visibility = View.GONE
                         delete()
                         val intent = Intent (this@DetailPesananActivity, MainActivity::class.java)
-                        Toast.makeText(this@DetailPesananActivity, "Berhasil ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DetailPesananActivity, "Berhasil memesan ", Toast.LENGTH_SHORT).show()
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
@@ -205,14 +205,11 @@ class DetailPesananActivity : AppCompatActivity() {
     fun getData(){
         val data = intent.getStringExtra("extra")
         mobil = Gson().fromJson<Mobil>(data, Mobil::class.java)
-
-        tv_mobil.text = mobil.merk+" "+mobil.name
+        tv_mobil.text = mobil.merk+" "+mobil.model
         tv_trans.text = mobil.transmisi
         tv_noPol.text = mobil.no_kendaraan
         tv_tglPesan.text = mobil.tglSewa
-        tv_jamPesan.text = mobil.jamSewa
         tv_tglKembali.text = mobil.tglKembali
-        tv_jamKembali.text = mobil.jamKembali
         tv_totalBayar.text = mobil.total
         val img = Config.urlData + mobil.image
         Picasso.get()

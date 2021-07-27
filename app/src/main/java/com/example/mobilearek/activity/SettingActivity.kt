@@ -26,15 +26,15 @@ import kotlin.collections.ArrayList
 
 class SettingActivity : AppCompatActivity() {
 
-    private lateinit var notificationManager: NotificationManagerCompat
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        notificationManager = NotificationManagerCompat.from(this)
 
-//        btn.
+
+
     }
 
 

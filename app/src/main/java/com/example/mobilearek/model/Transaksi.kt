@@ -2,7 +2,8 @@ package com.example.mobilearek.model
 
 class Transaksi {
     var id=0
-    var user_id=""
+    var user_id=0
+    var mobil_id=0
     var kode_tran=""
     var tgl_order=""
     var total_harga=""
@@ -16,5 +17,5 @@ class Transaksi {
     var expired_at=""
     var created_at=""
     var updated_at=""
-    var details = DetailTransaksi()
+    var mobil = Mobil()
 }

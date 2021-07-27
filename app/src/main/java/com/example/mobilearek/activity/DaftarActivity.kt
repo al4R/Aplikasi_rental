@@ -68,7 +68,7 @@ class DaftarActivity : AppCompatActivity() {
             edit_telepon.error = "Telepon tidak boleh kosong"
             edit_telepon.requestFocus()
             return
-        }else if(edit_telepon.length() < 9 ){
+        }else if(edit_telepon.length() < 9 && edit_telepon.length() > 13 ){
             edit_telepon.error = "Nomor Telepon tidak valid"
             edit_telepon.requestFocus()
             return
@@ -80,16 +80,21 @@ class DaftarActivity : AppCompatActivity() {
             edit_password.error = "Minimal 8 karakter"
             edit_password.requestFocus()
             return
+        }else if(edit_password.text.toString() != edit_konfir.text.toString() ){
+            edit_password.error = "Tidak cocok"
+            edit_konfir.error = "Tidak cocok"
+            edit_konfir.requestFocus()
+            return
         }else if(edit_nik.text.toString().isEmpty() ) {
             edit_nik.error = "NIK tidak boleh kosong"
             edit_nik.requestFocus()
             return
-        }else if(edit_nik.length() < 15 ){
+        }else if(edit_nik.length() < 16 && edit_nik.length() > 16  ){
             edit_nik.error = "NIK tidak valid"
             edit_nik.requestFocus()
             return
         }else if(fileImg == null){
-            btn_upload_ktp.requestFocus()
+            Toast.makeText(this, "Foto ktp tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return
         }else if(edit_email.text.toString().isNotEmpty()) {
             if (Patterns.EMAIL_ADDRESS.matcher(edit_email.text.toString()).matches() == false) {

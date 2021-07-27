@@ -16,6 +16,7 @@ class SharedPref(activity: Activity){
     val email = "email"
     val user = "user"
     val image = "image"
+    val id = 0
 
     init {
         sp = activity.getSharedPreferences(mypref, Context.MODE_PRIVATE)
@@ -38,6 +39,10 @@ class SharedPref(activity: Activity){
     }
     fun setString(key: String, value: String){
         sp.edit().putString(key,value).apply()
+    }
+
+    fun setInt(key: Int, value: Int){
+        sp.edit().putInt(key.toString(),value).apply()
     }
 
     fun getString(key: String): String {

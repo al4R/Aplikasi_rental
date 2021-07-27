@@ -1,6 +1,7 @@
 package com.example.mobilearek.activity
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_login.progress_bar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,12 +30,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        s= SharedPref(this)
 
+        s= SharedPref(this)
         mainbuuton()
         btn_masuk.setOnClickListener {
             login()
         }
+
     }
 
     private fun mainbuuton(){
@@ -46,9 +49,16 @@ class LoginActivity : AppCompatActivity() {
         }
         btn_close.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
+        }
+        btn_lupa_pass.setOnClickListener {
+            val intent= Intent(this,LupaPasswordActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        btn_hub_admin.setOnClickListener{
+            hubungi()
         }
     }
     private fun login() {
@@ -105,5 +115,22 @@ class LoginActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun hubungi(){
+        try {
+            val packageManager = this.packageManager
+            val i = Intent(Intent.ACTION_VIEW)
+            val url = "https://api.whatsapp.com/send/?phone=+6285747488316?text=Saya%memerlukan%bantuan%untuk%&app_absent=0"
+            i.setPackage("com.whatsapp")
+            i.data = Uri.parse(url)
+            if(i.resolveActivity(packageManager) != null){
+                startActivity(i)
+            }else{
+                Toast.makeText(this, "Install  WhatsApp terlebi dahulu", Toast.LENGTH_SHORT).show()
+            }
+        }catch (e: Exception){
+            Toast.makeText(this, "Error"+e.stackTrace, Toast.LENGTH_SHORT).show()
+        }
     }
 }

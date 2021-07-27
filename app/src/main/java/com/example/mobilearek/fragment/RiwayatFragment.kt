@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,7 @@ class RiwayatFragment : Fragment() {
     private lateinit var rvRiwayat : RecyclerView
     private lateinit var Sc : NestedScrollView
     private lateinit var lin : LinearLayout
+    private lateinit var pb : ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,25 +47,33 @@ class RiwayatFragment : Fragment() {
         rvRiwayat = view.findViewById(R.id.rv_riwayat)
         Sc = view.findViewById(R.id.sc)
         lin = view.findViewById(R.id.lL_empty)
+        pb = view.findViewById(R.id.loading_riwayat)
     }
     fun getRiwayat(){
+        pb.visibility = View.VISIBLE
         val id = SharedPref(requireActivity()).getUser()!!.id
         ApiConfig.instanceRetrofit.getRiwayat(id).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 val respon = response.body()
                 if(respon != null){
                     if (respon.success == 1){
+                        pb.visibility = View.GONE
                         displayRiwayat(respon.transaksi)
                         Log.d("RESPONS", "displayData: "+respon.transaksi.size)
                     }
                     if (respon.success == 1 && respon.transaksi.isEmpty()){
+                        pb.visibility = View.GONE
                         lin.visibility = View.VISIBLE
                         Sc.visibility = View.GONE
                     }
+                }else{
+                    lin.visibility = View.VISIBLE
+                    Sc.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                pb.visibility = View.GONE
                 Log.d("RESPONS", "ERROR: "+t.message)
 
             }
