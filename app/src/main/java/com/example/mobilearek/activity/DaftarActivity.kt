@@ -110,10 +110,8 @@ class DaftarActivity : AppCompatActivity() {
         val telepon = convertString(edit_telepon.text.toString())
         val nik = convertString(edit_nik.text.toString())
         progress_bar.visibility = View.VISIBLE
-
         ApiConfig.instanceRetrofit.register(
            nama, email, password, telepon, nik, img
-
         ).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 progress_bar.visibility = View.GONE
@@ -151,7 +149,7 @@ class DaftarActivity : AppCompatActivity() {
                 if (imageFile != null) {
                     Picasso.get()
                         .load(imageFile)
-                        .resize(400,400)
+                        .resize(540,300)
                         .into(iv_ktp)
                 }
             }

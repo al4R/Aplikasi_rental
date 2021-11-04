@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".fragment.RiwayatFragment">
     <RelativeLayout
+        android:id="@+id/rl_pencarian"
         android:paddingHorizontal="10dp"
         android:paddingTop="10dp"
         android:layout_width="match_parent"
@@ -16,48 +17,104 @@
         >
         <androidx.cardview.widget.CardView
             android:layout_centerVertical="true"
-            android:layout_width="300dp"
+            android:layout_width="350dp"
             app:cardCornerRadius="5dp"
             android:layout_height="35dp">
             <RelativeLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:id="@+id/rl_cari"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <SearchView
-                    android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/ic_cari"
-                    android:background="#00FFFFFF"
+                    android:iconifiedByDefault="false"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_search_24"
+                    android:queryHint="Cari berdasarkan model, merek atau harga"
+                    android:queryBackground="@android:color/transparent"
                     />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
     <LinearLayout
+        android:layout_below="@+id/rl_pencarian"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swRefresh"
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:id="@+id/rv_carimobil"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:layout_height="wrap_content" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:gravity="center"
-                    android:id="@+id/rv_carimobil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_empty_cari"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <include
+            layout="@layout/empty"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <include
+            layout="@layout/layout_cari"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/cari_gagal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/layout_gagal"
+            />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loading_pencarian"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/loading_page"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pc_cv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="25dp"
+        android:backgroundTint="@color/colorNavItem"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible"
+        android:layout_marginLeft="10dp">
+        <ImageButton
+            android:id="@+id/pc_cv_load"
+            android:backgroundTint="@color/colorNavItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_downward_24"
+            />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

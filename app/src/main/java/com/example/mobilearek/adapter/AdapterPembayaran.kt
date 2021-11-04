@@ -47,10 +47,10 @@ class AdapterPembayaran(var activity: Activity, var data : ArrayList<Transaksi>,
             holder.tvStatus.text = "Bukti tidak sesuai"
             holder.tvStatus.setTextColor(activity.getResources().getColor(R.color.ColorRed))
         }
-        Helper().ubahFormatTgl(data.expired_at,holder.tvExp)
-        holder.tvtglPesan.text = data.tgl_order
+        holder.tvExp.text = data.expired_at+" WIB"
+        holder.tvtglPesan.text = data.tgl_order+" WIB"
         holder.tvKode.text = data.kode_tran
-        holder.tvTotal.text = data.total_harga
+        holder.tvTotal.text = "Rp. "+data.total_harga
         holder.cdBayar.setOnClickListener {
             listener.onClicked(data)
         }

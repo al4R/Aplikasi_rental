@@ -51,20 +51,21 @@ class AdapterMobil(var activity: Activity): RecyclerView.Adapter<AdapterMobil.Ho
         return data.size
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.tvNama.text = data[position].merk +" "+ data[position].model
         holder.tvHarga.text = NumberFormat.getCurrencyInstance(Locale("in","ID")).format(Integer.valueOf(data[position].harga))
 //        holder.imgGambar.setImageResource(data[position].image)
         val status = data[position].status
         if(status == 2){
-            holder.tvStatus.text="Diboking"
+            holder.tvStatus.text="Dipesan"
             holder.tvStatus.setTextColor(activity.getResources().getColor(R.color.Kuning))
         }else if(status == 1){
             holder.tvStatus.text="Dipinjam"
             holder.tvStatus.setTextColor(activity.getResources().getColor(R.color.ColorRed))
         }else if(status == 0){
             holder.tvStatus.text="Tersedia"
+            holder.tvStatus.setTextColor(activity.getResources().getColor(R.color.bg_btn_color))
         }
         val image = Config.urlData+ data[position].image
         Picasso.get()
@@ -79,13 +80,15 @@ class AdapterMobil(var activity: Activity): RecyclerView.Adapter<AdapterMobil.Ho
             val str = Gson().toJson(data[position],Mobil::class.java)
             intent.putExtra("extra",str)
             activity.startActivity(intent)
+            notifyDataSetChanged()
         }
     }
-
+    @SuppressLint("NotifyDataSetChanged")
     fun clear(){
         data.clear()
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun addList(items: ArrayList<Mobil>){
         data.addAll(items)
         notifyDataSetChanged()

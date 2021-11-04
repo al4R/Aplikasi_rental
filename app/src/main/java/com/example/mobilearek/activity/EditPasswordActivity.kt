@@ -37,19 +37,17 @@ class EditPasswordActivity : AppCompatActivity() {
             onBackPressed()
         }
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Edit Password"
+        supportActionBar!!.title = "Ubah kata sandi"
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
-
-
     private fun editPass(){
         if(edit_password_lama.text!!.isEmpty()){
-            edit_password_lama.error = "Tidak boleh koseong"
+            edit_password_lama.error = "Tidak boleh kosong"
             edit_password_lama.requestFocus()
             return
         }else if(edit_password.text!!.isEmpty()){
-            edit_password.error = "Tidak boleh koseong"
+            edit_password.error = "Tidak boleh kosong"
             edit_password.requestFocus()
             return
         }
@@ -64,15 +62,13 @@ class EditPasswordActivity : AppCompatActivity() {
             return
         }
         val user=s.getUser()
-
         val id =user!!.id
-        ApiConfig.instanceRetrofit.editPass(id,edit_password_lama.text.toString(),edit_password.text.toString()) .enqueue(object : Callback<ResponModel> {
-            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
-
+        ApiConfig.instanceRetrofit.editPass(id,edit_password_lama.text.toString(),edit_password.text.toString())
+            .enqueue(object : Callback<ResponModel> { override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 val respon = response.body()
                 if (respon != null) {
                     if (respon.success == 1){
-                        Toast.makeText(this@EditPasswordActivity, "Berhasil" + respon.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditPasswordActivity, "Berhasil mengubah kata sandi", Toast.LENGTH_SHORT).show()
                         onBackPressed()
                     }else{
                         Toast.makeText(this@EditPasswordActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
@@ -81,7 +77,6 @@ class EditPasswordActivity : AppCompatActivity() {
                     Toast.makeText(this@EditPasswordActivity, "Tidak ada respon", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 Toast.makeText(this@EditPasswordActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }

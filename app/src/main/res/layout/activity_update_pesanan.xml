@@ -20,13 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
                     android:id="@+id/up_gambar"
-                    android:layout_width="match_parent"
+                    android:layout_width="180dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_baseline_directions_car_24"/>
                 <LinearLayout
@@ -46,108 +48,119 @@
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2">
-                            <TextView
-                                android:textSize="14dp"
-                                android:textColor="@color/ColorBlack"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Merk mobil : "/>
-                            <TextView
-                                android:id="@+id/up_nama"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Honda "
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
-
+                            android:text="Merek mobil "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tahun "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kapasitas "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Transmisi "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Harga sewa "
+                            android:textColor="@color/ColorBlack"/>
                     </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="14dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tahun : "/>
-                    <TextView
-                        android:id="@+id/up_tahun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2017"
-                        android:textColor="@color/bg_btn_color"/>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="14dp"
-                        android:textColor="@color/ColorBlack"
+                    <LinearLayout
+                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Harga Sewa : "/>
-                    <TextView
-                        android:id="@+id/up_harga"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:textColor="@color/ColorBlack"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:textColor="@color/ColorBlack"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 23000/jam "
-                        android:textColor="@color/bg_btn_color"/>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="14dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Transmisi : "/>
-                    <TextView
-                        android:id="@+id/up_transmisi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Manual"
-                        android:textColor="@color/bg_btn_color"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="14dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kapasitas: "/>
-                    <TextView
-                        android:id="@+id/up_kapasitas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4 orang"
-                        android:textColor="@color/bg_btn_color"/>
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/up_nama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Honda "
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/up_tahun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2017"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/up_harga"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 23000/jam "
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/up_transmisi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manual"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/up_kapasitas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4 orang"
+                            android:textColor="@color/bg_btn_color"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -170,6 +183,7 @@
                             android:textColor="@color/ColorBlack"
                             android:text="Pilih tanggal sewa"/>
                         <Button
+                            android:backgroundTint="@color/colorStatusBar"
                             android:id="@+id/btn_pilihSewa"
                             android:layout_gravity="center"
                             android:layout_width="70dp"
@@ -189,6 +203,7 @@
                         android:textColor="@color/ColorBlack"/>
 
                     <TextView
+                        android:textColor="@color/bg_btn_color"
                         android:id="@+id/up_sewa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -219,6 +234,7 @@
                             android:textColor="@color/ColorBlack"
                             android:text="Pilih tanggal akhir sewa"/>
                         <Button
+                            android:backgroundTint="@color/colorStatusBar"
                             android:id="@+id/btn_pilihAkhir"
                             android:layout_gravity="center"
                             android:layout_width="70dp"
@@ -237,6 +253,7 @@
                         android:textSize="20dp"
                         android:textColor="@color/ColorBlack"/>
                     <TextView
+                        android:textColor="@color/bg_btn_color"
                         android:id="@+id/up_kembali"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="20dp"
@@ -299,10 +316,11 @@
             android:layout_height="60dp"
             tools:ignore="NotSibling">
             <com.google.android.material.button.MaterialButton
+                android:backgroundTint="@color/colorStatusBar"
                 android:id="@+id/btn_update"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:text="Update"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:text="Simpan perubahan"
                 android:textAllCaps="false"/>
         </LinearLayout>
     </RelativeLayout>

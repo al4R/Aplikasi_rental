@@ -6,92 +6,110 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragment.HomeFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
-            android:paddingHorizontal="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_btn_color"
             android:orientation="vertical"
-            >
+            android:paddingHorizontal="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="Aplikasi Rental Kendaraan"
                 android:textColor="@color/colorWhite"
-                android:layout_centerVertical="true"
-                android:textSize="18dp"
-                />
+                android:textSize="18dp" />
 
             <RelativeLayout
-                android:layout_centerVertical="true"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                >
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp">
+
                 <ImageView
                     android:id="@+id/ic_mobil"
-                    android:background="#00FFFFFF"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_directions_car_24"
-                    />
+                    android:background="#00FFFFFF"
+                    android:src="@drawable/ic_baseline_directions_car_24" />
+
                 <RelativeLayout
                     android:id="@+id/id_bulat"
-                    android:visibility="gone"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_marginTop="1dp"
                     android:background="@drawable/bg_bulat"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp">
+                    android:visibility="gone">
+
                     <TextView
                         android:id="@+id/tv_angka"
-                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:text="1"
-                        android:textSize="10dp"
-                        android:textColor="@color/colorNavItem"/>
+                        android:textColor="@color/colorNavItem"
+                        android:textSize="10dp" />
                 </RelativeLayout>
 
             </RelativeLayout>
 
         </RelativeLayout>
-        <TextView
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/ColorBlack"
-            android:textStyle="bold"
-            android:text="Daftar Mobil"/>
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefresh"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:layout_marginBottom="15dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:clipToPadding="false"
+                        android:paddingTop="35dp"
+                        android:id="@+id/rv_mobil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:gravity="center"
-                            android:id="@+id/rv_mobil"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
                 </LinearLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_vector_2">
+                <TextView
+                    android:id="@+id/tv_daftar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Daftar Mobil"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+       </LinearLayout>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:id="@+id/home_gagal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/layout_gagal"/>
     </LinearLayout>
     <ProgressBar
         android:visibility="gone"
@@ -99,5 +117,31 @@
         android:layout_centerInParent="true"
         android:layout_width="40dp"
         android:layout_height="40dp"/>
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pg_bar_page"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hm_cv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="25dp"
+        android:backgroundTint="@color/colorNavItem"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible"
+        android:layout_marginLeft="10dp">
+        <ImageButton
+            android:id="@+id/cv_load"
+            android:backgroundTint="@color/colorNavItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_downward_24"
+            />
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

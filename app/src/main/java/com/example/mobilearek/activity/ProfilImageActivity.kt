@@ -34,8 +34,6 @@ class ProfilImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profil_image)
         s= SharedPref(this)
-
-
         mainbutton()
     }
     var fileImg: File? =null
@@ -71,7 +69,7 @@ class ProfilImageActivity : AppCompatActivity() {
                         progress_bar.visibility = View.GONE
                         s.setUser(respon.user)
                         s.setString(s.image,respon.user.image)
-                        Toast.makeText(this@ProfilImageActivity, respon.user.image, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ProfilImageActivity, "Berhasil mengubah", Toast.LENGTH_SHORT).show()
                         onBackPressed()
                     }else{
                         Toast.makeText(this@ProfilImageActivity, "Error : " + respon.message, Toast.LENGTH_SHORT).show()
@@ -80,19 +78,15 @@ class ProfilImageActivity : AppCompatActivity() {
                     Toast.makeText(this@ProfilImageActivity, "Tidak ada respon" , Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 progress_bar.visibility = View.GONE
                 Toast.makeText(this@ProfilImageActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
-
         })
-
     }
     fun toast(s: String){
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         EasyImage.handleActivityResult(requestCode,resultCode,data,this, object : DefaultCallback(){
@@ -102,7 +96,7 @@ class ProfilImageActivity : AppCompatActivity() {
                 if (imageFile != null) {
                     Picasso.get()
                         .load(imageFile)
-                        .placeholder(R.drawable.ic_baseline_arrow_back_24)
+                        .placeholder(R.drawable.ic_baseline_person_24)
                         .error(R.drawable.ic_baseline_close_24)
                         .resize(400,400)
                         .into(iv_profil)
@@ -111,7 +105,6 @@ class ProfilImageActivity : AppCompatActivity() {
 
         })
     }
-
     fun convertFile(file: File): MultipartBody.Part{
         val reqFile: RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
         return MultipartBody.Part.createFormData("image",file.name,reqFile)

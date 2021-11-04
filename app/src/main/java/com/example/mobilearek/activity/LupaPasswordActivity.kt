@@ -25,9 +25,7 @@ class LupaPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lupa_password)
-
         s= SharedPref(this)
-
         btn_lpp.setOnClickListener {
             kirim()
         }

@@ -33,6 +33,7 @@ class PesananFragment : Fragment() {
     private lateinit var Empty : LinearLayout
     private lateinit var Pb : ProgressBar
     private lateinit var Swp : SwipeRefreshLayout
+    private lateinit var llGagal : LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,40 +54,43 @@ class PesananFragment : Fragment() {
         }
     }
 
-    fun init(view: View) {
+    private fun init(view: View) {
         rvTransaksi = view.findViewById(R.id.rv_transaksi)
         Scrv = view.findViewById(R.id.nest_scrol)
         Empty = view.findViewById(R.id.ll_empty)
         Pb = view.findViewById(R.id.loading_bayar)
         Swp = view.findViewById(R.id.swipe)
+        llGagal = view.findViewById(R.id.pesan_gagal)
     }
-    fun getTransaksi(){
+    private fun getTransaksi(){
+        llGagal.visibility = View.GONE
+        Empty.visibility = View.GONE
         Pb.visibility = View.VISIBLE
+        rvTransaksi.visibility = View.GONE
         val id = SharedPref(requireActivity()).getUser()!!.id
         ApiConfig.instanceRetrofit.getTransaksi(id).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
-                val respon = response.body()
-                if(respon != null){
-                    if (respon.success == 1){
-                        Pb.visibility = View.GONE
-                        displayRiwayat(respon.transaksi)
-                        Log.d("RESPONS", "displayData: "+respon.transaksi.size)
-                    }
-                    if (respon.success == 1 && respon.transaksi.isEmpty()){
-                        Pb.visibility = View.GONE
-                        Scrv.visibility = View.GONE
-                        Empty.visibility = View.VISIBLE
-                    }
+                val respon = response.body()!!
+                if(!respon.transaksi.isEmpty()){
+                    Pb.visibility = View.GONE
+                    rvTransaksi.visibility = View.VISIBLE
+                    displayPembayaran(respon.transaksi)
+                    Log.d("RESPONS", "displayData: "+respon.transaksi.size)
+                }else{
+                    Pb.visibility = View.GONE
+                    Scrv.visibility = View.GONE
+                    Empty.visibility = View.VISIBLE
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 Log.d("RESPONS", "ERROR: "+t.message)
+                Pb.visibility = View.GONE
+                llGagal.visibility = View.VISIBLE
 
             }
         })
     }
-    fun displayRiwayat(transaksi : ArrayList<Transaksi>){
+    private fun displayPembayaran(transaksi : ArrayList<Transaksi>){
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         rvTransaksi.adapter = activity?.let {
@@ -101,7 +105,6 @@ class PesananFragment : Fragment() {
             })
         }
         rvTransaksi.layoutManager = layoutManager
-
     }
 
     override fun onResume() {

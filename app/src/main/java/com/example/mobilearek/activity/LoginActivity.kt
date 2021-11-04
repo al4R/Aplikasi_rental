@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
@@ -23,24 +24,15 @@ import retrofit2.Response
 import java.lang.Exception
 
 class LoginActivity : AppCompatActivity() {
-
     lateinit var s:SharedPref
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         s= SharedPref(this)
         mainbuuton()
-        btn_masuk.setOnClickListener {
-            login()
-        }
-
     }
-
     private fun mainbuuton(){
-
         val btndaftar = findViewById<Button>(R.id.btn_daftar)
         btndaftar.setOnClickListener {
             val intent= Intent(this,DaftarActivity::class.java)
@@ -60,28 +52,27 @@ class LoginActivity : AppCompatActivity() {
         btn_hub_admin.setOnClickListener{
             hubungi()
         }
-    }
-    private fun login() {
-        if(et_email.text.toString().isEmpty()){
-            et_email.error = "Email tidak valid"
-            et_email.requestFocus()
-            return
-        }else if(et_password.text.toString().isEmpty()) {
-            et_password.error = "Pasword tidak boleh kosong"
-            et_password.requestFocus()
-            return
-        }else if(et_password.length() < 7){
-            et_password.error = "Minimal 8 karakter"
-            et_password.requestFocus()
-            return
-        }else if(et_email.text.toString().isNotEmpty()){
-            if (Patterns.EMAIL_ADDRESS.matcher(et_email.text.toString()).matches() == false) {
+        btn_masuk.setOnClickListener {
+            if(et_email.text.toString().isEmpty()){
                 et_email.error = "Email tidak valid"
                 et_email.requestFocus()
-                return
+            }else if(et_password.text.toString().isEmpty()) {
+                et_password.error = "Pasword tidak boleh kosong"
+                et_password.requestFocus()
+            }else if(et_password.length() < 7){
+                et_password.error = "Minimal 8 karakter"
+                et_password.requestFocus()
+            }else if(et_email.text.toString().isNotEmpty()){
+                if (Patterns.EMAIL_ADDRESS.matcher(et_email.text.toString()).matches() == false) {
+                    et_email.error = "Email tidak valid"
+                    et_email.requestFocus()
+                }
+            }else{
+                daftar()
             }
         }
-
+    }
+    private fun daftar() {
         progress_bar.visibility = View.VISIBLE
         ApiConfig.instanceRetrofit.login(et_email.text.toString(), et_password.text.toString()
         ).enqueue(object : Callback<ResponModel> {
@@ -108,10 +99,9 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Tidak ada respon", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 progress_bar.visibility = View.GONE
-                Toast.makeText(this@LoginActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
+                Log.e("RESPONS", "ERROR: "+t.message)
             }
 
         })

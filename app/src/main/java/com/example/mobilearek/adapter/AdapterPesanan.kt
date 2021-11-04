@@ -30,6 +30,8 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
         val tvUpdate = view.findViewById<TextView>(R.id.tv_update)
         val tvCancel = view.findViewById<TextView>(R.id.tv_cancel)
         val tvLanjut = view.findViewById<TextView>(R.id.tv_lanjut)
+        val tvSewa = view.findViewById<TextView>(R.id.tv_tgl_sewa)
+        val tvKembali = view.findViewById<TextView>(R.id.tv_tgl_kembali)
 //        val idTr = view.findViewById<CardView>(R.id.id_tr)
 
 
@@ -46,6 +48,8 @@ class AdapterPesanan (var activity: Activity, var data:ArrayList<Mobil>, var lis
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.tvMobil.text = data[position].merk+" "+data[position].model
         holder.tvTotal.text = "Rp."+data[position].total
+        holder.tvSewa.text = data[position].tglSewa+" WIB"
+        holder.tvKembali.text = data[position].tglKembali+" WIB"
 
         holder.tvLanjut.setOnClickListener{
             val intent = Intent(activity, DetailPesananActivity::class.java)

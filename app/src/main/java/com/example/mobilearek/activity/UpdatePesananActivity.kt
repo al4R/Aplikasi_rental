@@ -47,13 +47,18 @@ class UpdatePesananActivity : AppCompatActivity() {
             setTglKmb()
         }
         btn_update.setOnClickListener {
-            update()
+            if(sewa == null){
+                toast("pilih tanggal sewa")
+            }else if(kembali == null){
+                toast("pilih tanggal kembali")
+            }else {
+                update()
+            }
         }
     }
 
     val c:Calendar = Calendar.getInstance()
     var kembali : String? = null
-
     private fun setTglKmb() {
         DatePickerDialog(this, { _, yy, MM, dd ->
             var tglKmb = "$dd/${MM+1}/$yy"
@@ -157,17 +162,15 @@ class UpdatePesananActivity : AppCompatActivity() {
         kembali = mobil.TglK
         up_sewa.text = mobil.tglSewa
         up_kembali.text = mobil.tglKembali
-
-
         val img = Config.urlData + mobil.image
         Picasso.get()
             .load(img)
-            .placeholder(R.drawable.ic_baseline_arrow_back_24)
+            .placeholder(R.drawable.ic_baseline_directions_car_24_black)
             .error(R.drawable.ic_baseline_close_24)
+            .resize(500,400)
             .into(up_gambar)
-
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Update Pesanan"
+        supportActionBar!!.title = "Edit pesanan"
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }

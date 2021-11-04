@@ -1,5 +1,6 @@
 package com.example.mobilearek.activity
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -42,8 +43,8 @@ import java.io.File
 @Suppress("SENSELESS_COMPARISON")
 class DetailTransaksiActivity : AppCompatActivity() {
 
-    lateinit var transaksi: Transaksi
-    lateinit var s:SharedPref
+    private lateinit var transaksi: Transaksi
+    private lateinit var s:SharedPref
     private lateinit var notificationManager: NotificationManagerCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,24 +102,37 @@ class DetailTransaksiActivity : AppCompatActivity() {
         })
         alert.show()
     }
+    private var Metode : String = ""
+    @SuppressLint("SetTextI18n")
     private fun getData(){
         val user = s.getUser()
         val data = intent.getStringExtra("transaksi")
         transaksi = Gson().fromJson<Transaksi>(data,Transaksi::class.java)
-        if (transaksi.status_bayar == 1){
-            btn_upload_bukti.isEnabled = false
-            btn_batalT.isEnabled = false
-        }
         kode_trn.text = transaksi.kode_tran
-        tgl_pesan.text = transaksi.tgl_order
+        tgl_pesan.text = transaksi.tgl_order+" WIB"
         nama_pemesan.text = user!!.name
         tgl_sewa.text = transaksi.tgl_sewa
         tgl_kembali.text = transaksi.tgl_akhir_sewa
         tv_durasi.text = transaksi.lama_sewa
-        totalByr.text = transaksi.total_harga
+        totalByr.text = "Rp. "+transaksi.total_harga
         dt_model.text = transaksi.mobil.merk + " " + transaksi.mobil.model
-        dt_sewa.text = transaksi.mobil.harga
+        dt_sewa.text = "Rp. "+transaksi.mobil.harga
         dt_nomor.text = transaksi.mobil.no_kendaraan
+        dt_kap.text = transaksi.mobil.kapasitas+" orang"
+        dt_trans.text = transaksi.mobil.transmisi
+        no_rek.text = transaksi.transfer
+        if (transaksi.transfer == "085747488316"){
+            Metode = "DANA"
+        }else if (transaksi.transfer == "085789349864"){
+            Metode = "OVO"
+        }else if (transaksi.transfer =="1234xxxxxxx7777"){
+            Metode = "Bank BCA"
+        }else if (transaksi.transfer == "1234xxxxxxx8888"){
+            Metode = "Bank BRI"
+        }else if (transaksi.transfer == "1234xxxxxxx9999"){
+            Metode = "Bank MANDIRI"
+        }
+        metode.text = Metode
         val imgMobil = Config.urlData + transaksi.mobil.image
         Picasso.get()
             .load(imgMobil)
@@ -126,16 +140,23 @@ class DetailTransaksiActivity : AppCompatActivity() {
             .error(R.drawable.ic_baseline_close_24)
             .resize(400, 400)
             .into(dt_mobil)
-        if(transaksi.bukti_tf == null){
+        if(transaksi.bukti_tf.isEmpty()){
             bukti_byr.setImageResource(R.drawable.ic_baseline_content_copy_24)
+        }else{
+            val image = Config.urlBukti + transaksi.bukti_tf
+            Picasso.get()
+                .load(image)
+                .placeholder(R.drawable.ic_baseline_content_copy_24)
+                .error(R.drawable.ic_baseline_close_24)
+                .resize(400, 400)
+                .into(bukti_byr)
         }
-        val image = Config.urlBukti + transaksi.bukti_tf
-        Picasso.get()
-            .load(image)
-            .placeholder(R.drawable.ic_baseline_content_copy_24)
-            .error(R.drawable.ic_baseline_close_24)
-            .resize(400, 400)
-            .into(bukti_byr)
+        if (transaksi.status_bayar == 1){
+            btn_upload_bukti.isEnabled = false
+            btn_batalT.isEnabled = false
+        }
+
+
     }
     private fun uploadImage() {
         loading_det_trans.visibility = View.VISIBLE
@@ -161,12 +182,10 @@ class DetailTransaksiActivity : AppCompatActivity() {
                     Toast.makeText(this@DetailTransaksiActivity, "Tidak ada respon" , Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 loading_det_trans.visibility = View.GONE
                 Toast.makeText(this@DetailTransaksiActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
-
         })
 
     }

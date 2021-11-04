@@ -40,54 +40,76 @@
             android:layout_marginTop="10dp"
             android:layout_below="@+id/kode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
-                android:textColor="@color/ColorBlack"
-                android:textSize="12dp"
+                android:textColor="@color/colorsoftBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dipesan tanggal : "/>
+                android:text="Dipesan pukul  "/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expired pukul "/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Bayar "/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/kode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/kode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/by_tanggal"
                 android:textColor="@color/bg_btn_color"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2021-06-13 16:47:07"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_below="@+id/pesan"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <TextView
-                android:textColor="@color/ColorBlack"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Expired pada tanggal : "/>
-            <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/by_expired"
                 android:textColor="@color/ColorRed"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2021-06-13 16:47:07"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_below="@+id/pesan"
-            android:layout_marginTop="35dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <TextView
-                android:textSize="12dp"
-                android:textColor="@color/ColorBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Bayar : "/>
-            <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/by_total"
-                android:textSize="12dp"
                 android:textColor="@color/bg_btn_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,11 +121,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
-                android:textSize="13dp"
-                android:textColor="@color/ColorBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status : "/>
+                android:text="Status : "
+                android:textColor="@color/colorsoftBlack"
+                android:textSize="13dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="50dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/by_status"
                 android:textSize="13dp"

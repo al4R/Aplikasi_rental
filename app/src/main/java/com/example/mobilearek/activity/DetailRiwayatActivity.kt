@@ -41,7 +41,7 @@ class DetailRiwayatActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun getData(){
+    private fun getData(){
         val data = intent.getStringExtra("transaksi")
         transaksi = Gson().fromJson<Transaksi>(data, Transaksi::class.java)
         kode_tr.text = transaksi.kode_tran
@@ -61,14 +61,15 @@ class DetailRiwayatActivity : AppCompatActivity() {
             .error(R.drawable.ic_baseline_close_24)
             .resize(400, 400)
             .into(dr_mobil)
-        rw_mobil.text = "Mobil : " + transaksi.mobil.merk +" "+ transaksi.mobil.model +" "+ transaksi.mobil.tahun
-        harga_sewa.text = "Harga sewa: Rp "+transaksi.mobil.harga
-        nomorM.text = "Nomor kendaraan : "+transaksi.mobil.no_kendaraan
+        rw_mobil.text = transaksi.mobil.merk +" "+ transaksi.mobil.model +" "+ transaksi.mobil.tahun
+        harga_sewa.text = "Rp. "+transaksi.mobil.harga
+        rw_trans.text = transaksi.mobil.transmisi
+        rw_kap.text = transaksi.mobil.kapasitas+" Orang"
+        nomorM.text = transaksi.mobil.no_kendaraan
         tgl_sewa.text = "Tanggal "+transaksi.tgl_sewa
         tglKmbali.text = "Tanggal "+transaksi.tgl_akhir_sewa
         tv_durasi.text = transaksi.lama_sewa
         totalByr.text = "Rp. "+transaksi.total_harga
-
     }
     private fun mainButton(){
         btn_hapus.setOnClickListener {
@@ -82,11 +83,11 @@ class DetailRiwayatActivity : AppCompatActivity() {
     private fun alertDialog(){
         val alert = AlertDialog.Builder(this)
         alert.setTitle("Apakah anda yakin !")
-        alert.setMessage("Ingin membatalkan pesanan ?")
-        alert.setPositiveButton("Yes",{  _, _->
+        alert.setMessage("ingin menghapus riwayat ini ?")
+        alert.setPositiveButton("Benar",{  _, _->
             hapus()
         })
-        alert.setNegativeButton("No",{ _, _->
+        alert.setNegativeButton("Tidak",{ _, _->
 
         })
         alert.show()
@@ -109,7 +110,6 @@ class DetailRiwayatActivity : AppCompatActivity() {
                     }
                 }
             }
-
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
                 dtl_rw.visibility = View.GONE
                 Toast.makeText(this@DetailRiwayatActivity, "Error:" + t.message, Toast.LENGTH_SHORT).show()

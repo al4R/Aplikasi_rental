@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_mobil"
     android:layout_width="155dp"
-    android:layout_height="235dp"
+    android:layout_height="227dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="7dp"
     android:layout_marginVertical="7dp">
@@ -30,7 +30,7 @@
             android:lines="2"
             android:maxLines="2"
             android:ellipsize="marquee"
-            android:textColor="@color/ColorBlack"
+            android:textColor="@color/colorsoftBlack"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Nama"/>
@@ -45,15 +45,15 @@
             android:text="Sedia"/>
 
         <TextView
-            android:paddingLeft="10dp"
-            android:textColor="@color/ColorBlack"
-            android:textSize="16dp"
             android:id="@+id/tv_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
             android:paddingBottom="10dp"
-            android:text="Rp.0"/>
+            android:text="Rp.0"
+            android:textColor="@color/colorsoftBlack"
+            android:textSize="16dp" />
     </RelativeLayout>
 
 

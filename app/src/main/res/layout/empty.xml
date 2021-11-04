@@ -6,13 +6,14 @@
     <ImageView
         android:id="@+id/dvr"
         android:layout_centerInParent="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_baseline_dvr_24"/>
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_baseline_hourglass_empty_24"/>
     <TextView
         android:layout_centerInParent="true"
         android:layout_below="@+id/dvr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data kosong"/>
+        android:text="Belum ada data yang dapat dimuat"
+        android:textColor="@color/colorNavItem"/>
 </RelativeLayout>

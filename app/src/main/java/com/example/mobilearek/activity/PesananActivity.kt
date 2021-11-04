@@ -1,5 +1,6 @@
 package com.example.mobilearek.activity
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,10 +38,10 @@ class PesananActivity : AppCompatActivity() {
            myDb.daoPesan().deleteAll()
        }else{
            listMobil = myDb.daoPesan().getAll() as ArrayList
-
            val layoutManager = LinearLayoutManager(this)
            layoutManager.orientation = LinearLayoutManager.VERTICAL
            adapter = AdapterPesanan(this,listMobil,object : AdapterPesanan.Listeners{
+               @SuppressLint("NotifyDataSetChanged")
                override fun onDelete(position: Int) {
                    listMobil.removeAt(position)
                    adapter.notifyDataSetChanged()
@@ -56,7 +57,7 @@ class PesananActivity : AppCompatActivity() {
         myDb = MyDatabase.getInstance(this)!!
 
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Pesanan"
+        supportActionBar!!.title = "Daftar pesanan"
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 

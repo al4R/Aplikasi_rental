@@ -56,7 +56,8 @@ interface ApiService {
 
     @POST("search/{q}")
     fun searchMobil(
-        @Path("q") q:String
+        @Path("q") q:String,
+        @QueryMap param : HashMap <String, String>
     ): Call<ResponModel>
 
     @GET("mobilpage")
@@ -116,6 +117,8 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("password") password: String
     ): Call<ResponModel>
+
+
 
 
 }

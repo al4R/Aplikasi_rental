@@ -28,10 +28,6 @@ class DetailMobilActivity : AppCompatActivity() {
     lateinit var myDb: MyDatabase
     lateinit var mobil: Mobil
     lateinit var s:SharedPref
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_mobil)
@@ -39,7 +35,6 @@ class DetailMobilActivity : AppCompatActivity() {
         s = SharedPref(this)
         val data = intent.getStringExtra("extra")
         mobil = Gson().fromJson<Mobil>(data, Mobil::class.java)
-
         getData()
         if (s.getStatusLogin() == false){
             btn_pesan.isEnabled = false
@@ -60,7 +55,6 @@ class DetailMobilActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Periksa daftar pesanan anda", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 
@@ -75,7 +69,6 @@ class DetailMobilActivity : AppCompatActivity() {
         bk_kapasitas.text = mobil.kapasitas+" Orang"
         bk_tahun.text = mobil.tahun
         bk_transmisi.text = mobil.transmisi
-
         deskripsi.text = mobil.deskripsi
 
 

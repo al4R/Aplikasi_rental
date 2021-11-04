@@ -50,15 +50,12 @@ class BokingActivity : AppCompatActivity() {
         bk_kapasitas.text = mobil.kapasitas+" Orang"
         bk_tahun.text = mobil.tahun
         bk_transmisi.text = mobil.transmisi
-
-//        tv_deskripsi.text = mobil.deskripsi
-
-
         val img = Config.urlData + mobil.image
         Picasso.get()
             .load(img)
-            .placeholder(R.drawable.ic_baseline_arrow_back_24)
+            .placeholder(R.drawable.ic_baseline_directions_car_24_black)
             .error(R.drawable.ic_baseline_close_24)
+            .resize(500,400)
             .into(bk_gambar)
 
         setSupportActionBar(toolbar)
@@ -78,7 +75,13 @@ class BokingActivity : AppCompatActivity() {
            setTglKmb()
        }
        btn_boking.setOnClickListener {
-           insert()
+           if(sewa == null){
+            toast("pilih tanggal sewa")
+           }else if(kembali == null){
+            toast("pilih tanggal kembali")
+           }else{
+               insert()
+           }
        }
     }
     private fun insert(){
@@ -96,7 +99,6 @@ class BokingActivity : AppCompatActivity() {
 
     }
     val c: Calendar = Calendar.getInstance()
-
     var kembali : String? = null
     private fun setTglKmb() {
         DatePickerDialog(this, { _, yy, MM, dd ->
@@ -191,44 +193,6 @@ class BokingActivity : AppCompatActivity() {
 
             }
         }
-    @SuppressLint("SimpleDateFormat")
-    private fun boking(){
-//            val today = Date()
-//            val sdf = SimpleDateFormat("dd/MM/yyyy HH.mm")
-//            val tglSewa: Date = sdf.parse(sewa)
-//            val tglKmb: Date = sdf.parse(kembali)
-//            val hmobil = mobil.harga.toInt()
-//            val hari: Long = (tglKmb.time - tglSewa.time) / 86400000
-//            val jam: Long = (tglKmb.time - tglSewa.time) % 86400000 / 3600000
-//            val menit: Long = (tglKmb.time - tglSewa.time) % 86400000 % 3600000 / 60000
-//            val besok = today.time + 86400000
-//            if (tglSewa.time > tglKmb.time) {
-//                toast("input tidak benar")
-//                return
-//            } else if (tglSewa.time <= today.time) {
-//                toast("tanggal atau jam sewa salah")
-//                return
-//            } else if (hari < 1 && jam < 1) {
-//                toast("minimal sewa 1 jam")
-//                return
-//            } else if (hari > 7) {
-//                toast("sewa terlalu lama")
-//                return
-//            } else if (tglSewa.time > besok) {
-//                toast("besok")
-//                return
-//            }else {
-//                val tmenit: Double = menit.toDouble() / 60 * hmobil
-//                val total = ((hari * 24) + jam) * hmobil + Math.round(tmenit)
-//                bk_total.text = ("$total ")
-//                mobil.total = bk_total.text.toString()
-//                mobil.tglSewa = bk_sewa.text.toString()
-//                mobil.tglKembali = bk_kembali.text.toString()
-//                mobil.lamaSewa = (hari * 24 + jam).toString()+" jam "+menit.toString()+" menit"
-//                insert()
-//            }
-        }
-
     override fun onResume() {
         super.onResume()
     }

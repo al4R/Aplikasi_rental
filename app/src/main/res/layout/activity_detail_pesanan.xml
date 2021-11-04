@@ -72,13 +72,13 @@
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
-                android:paddingLeft="20dp"
+                android:paddingLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Detail Pesanan"
+                    android:text="Detail mobil"
                     android:textColor="@color/ColorBlack"
                     android:textSize="16dp"/>
                 <LinearLayout
@@ -89,60 +89,118 @@
                     <ImageView
                         android:id="@+id/iv_mobil"
                         android:layout_gravity="center"
-                        android:layout_width="80dp"
-                        android:layout_height="60dp"
+                        android:layout_width="100dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/brio"/>
                     <LinearLayout
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <LinearLayout
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/ColorBlack"
-                                android:text="Model mobil : "/>
-                            <TextView
-                                android:id="@+id/tv_mobil"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Honda Brio"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
-                        <LinearLayout
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text="Model mobil  "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/ColorBlack"
-                                android:text="Transmisi : "/>
-                            <TextView
-                                android:id="@+id/tv_trans"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Manual"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
-                        <LinearLayout
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text="Transmisi  "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/ColorBlack"
-                                android:text="No Kendaraan : "/>
-                            <TextView
-                                android:id="@+id/tv_noPol"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="AB 6718 CB"
-                                android:textColor="@color/bg_btn_color"/>
-                        </LinearLayout>
-
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text="No Kendaraan  "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text="Kapasitas "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text="Harga sewa "/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text=": "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text=": "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text=": "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text=": "/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ColorBlack"
+                            android:text=": "/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_mobil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Honda Brio"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_trans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manual"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_noPol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AB 6718 CB"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_kap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6 orang"
+                            android:textColor="@color/bg_btn_color"/>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/tv_hg_sewa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6 orang"
+                            android:textColor="@color/bg_btn_color"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -152,101 +210,97 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/colorGrey"/>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:orientation="vertical"
+            <RelativeLayout
+                android:layout_marginHorizontal="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content">
+
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Sewa  "
+                        android:textColor="@color/ColorBlack" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tanggal Kembali  "
+                        android:textColor="@color/ColorBlack" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Total bayar  "
+                        android:textColor="@color/ColorBlack" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="115dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/ColorBlack"
-                        android:text="Tanggal Sewa : "/>
+                        android:text=": "/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ColorBlack"
+                        android:text=": "/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ColorBlack"
+                        android:text=": "/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="130dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
                     <TextView
                         android:id="@+id/tv_tglPesan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/bg_btn_color"
                         android:text="20 Mei 2021"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/ColorBlack"
-                        android:text="Tanggal Kembali : "/>
-                    <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/tv_tglKembali"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/bg_btn_color"
                         android:text="22 Mei 2021"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/ColorBlack"
-                        android:text="Total bayar : "/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/bg_btn_color"
-                        android:text="Rp. "/>
-                    <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/tv_totalBayar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/bg_btn_color"
                         android:text="200000"/>
                 </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/colorGrey"/>
-<!--            <RelativeLayout-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginRight="20dp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingBottom="5dp">-->
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_upload"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="upload bukti"/>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    android:layout_alignParentBottom="true"-->
-<!--                    android:layout_width="200dp"-->
-<!--                    android:layout_height="4dp"-->
-<!--                    android:background="@color/colorGrey"/>-->
-<!--                <ImageView-->
-<!--                    android:layout_marginLeft="175dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:src="@drawable/ic_baseline_folder_24"/>-->
-<!--            </RelativeLayout>-->
             <LinearLayout
+                android:layout_marginHorizontal="15dp"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -257,27 +311,34 @@
                     android:textColor="@color/ColorRed"
                     android:text="Catatan : "/>
                 <TextView
-                    android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/ColorBlack"
                     android:text="Penyewa harus datang ke tempat penyewaan untuk mengambil dan mengembalikan mobil"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorGrey"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <LinearLayout
-        android:gravity="center"
+        android:paddingHorizontal="5dp"
         android:id="@+id/ll"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_pesan"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:backgroundTint="@color/colorStatusBar"
             android:text="Buat Pesanan"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" />
     </LinearLayout>
     <ProgressBar
         android:visibility="gone"

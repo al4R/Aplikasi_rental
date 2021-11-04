@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textColor="@color/colorWhite"
-            android:text="Akun"/>
+            android:text="Profil"/>
 
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
@@ -46,14 +46,13 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/ic_baseline_person_24"/>
+
                     <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_baseline_create_24"/>
+                        android:src="@drawable/ic_baseline_create_24" />
                 </RelativeLayout>
                 <LinearLayout
                     android:gravity="center"
@@ -125,7 +124,7 @@
                     android:layout_width="250dp"
                     android:layout_height="55dp"
                     android:textAlignment="viewStart"
-                    android:text="Edit Profile"
+                    android:text="Edit profil"
                     android:fontFamily="@font/font_roboto"
                     android:textAllCaps="false"
                     android:textColor="@color/textbtn"
@@ -138,7 +137,7 @@
                     android:layout_width="250dp"
                     android:layout_height="55dp"
                     android:textAlignment="viewStart"
-                    android:text="Edit Password"
+                    android:text="Ubah kata sandi"
                     android:fontFamily="@font/font_roboto"
                     android:textAllCaps="false"
                     app:icon="@drawable/ic_baseline_person_24"

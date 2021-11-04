@@ -11,283 +11,499 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/bar"
-        android:layout_above="@+id/btn_batalT"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_batalT"
+        android:layout_below="@+id/bar"
+        android:layout_marginTop="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
-                android:textColor="@color/ColorBlack"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detail Transaksi"/>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorGrey"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Detail Transaksi"
+                android:textColor="@color/ColorBlack" />
+
             <RelativeLayout
+                android:layout_width="160dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:layout_width="150dp"
-                android:layout_height="100dp">
+                android:layout_marginTop="20dp">
+
                 <ImageView
                     android:id="@+id/bukti_byr"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_content_copy_24"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"/>
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_content_copy_24" />
+
                 <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_add_24"/>
+                    android:src="@drawable/ic_baseline_add_24" />
             </RelativeLayout>
+
             <Button
-                android:backgroundTint="@color/colorStatusBar"
-                android:layout_gravity="center"
                 android:id="@+id/btn_upload_bukti"
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="50dp"
-                android:textAllCaps="false"
-                android:text="upload bukti"
-                />
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorStatusBar"
+                android:text="Unggah bukti"
+                android:textAllCaps="false" />
+
             <LinearLayout
-                android:layout_marginTop="10dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorGrey"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGrey" />
+
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <LinearLayout
-                    android:layout_marginLeft="10dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:textSize="13dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kode transaksi : "/>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:textSize="13dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dipesan tanggal : "/>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:textSize="13dp"
-                        android:textColor="@color/ColorBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dipesan Oleh : "/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/tgl_pesan"
-                        android:layout_marginTop="5dp"
-                        android:textSize="13dp"
-                        android:textColor="@color/bg_btn_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tanggal 2021-06-13 16:47:07"/>
 
                     <TextView
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/nama_pemesan"
-                        android:textSize="13dp"
-                        android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Anisa Putri"/>
+                        android:layout_marginTop="5dp"
+                        android:text="Kode transaksi "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
                     <TextView
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/kode_trn"
-                        android:textSize="13dp"
-                        android:textColor="@color/bg_btn_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="KD/TRN-210613/594"/>
+                        android:layout_marginTop="5dp"
+                        android:text="Dipesan tanggal"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Dipesan Oleh"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Metode bayar"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="NO. tujuan"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Total bayar"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kode_trn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="KD/TRN-210613/594"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tgl_pesan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tanggal 2021-06-13 16:47:07"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/nama_pemesan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Anisa Putri"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/metode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="OVO"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/no_rek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="085789349864"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/totalByr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Rp. 300000"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorGrey"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGrey" />
+
             <RelativeLayout
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp">
 
                 <ImageView
                     android:id="@+id/dt_mobil"
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/brio" />
 
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="110dp"
-                    android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
+                <RelativeLayout
+
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="110dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Model mobil "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="95dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
                     <TextView
                         android:id="@+id/dt_model"
-                        android:textColor="@color/ColorBlack"
-                        android:textSize="13dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mobil : Honda Brio 2017"/>
+                        android:layout_marginLeft="110dp"
+                        android:text="Honda Brio 2017"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+
                     <TextView
-                        android:id="@+id/dt_sewa"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/ColorBlack"
-                        android:textSize="13dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Harga sewa: 30000"/>
+                        android:layout_marginTop="25dp"
+                        android:text="Transmisi  "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="95dp"
+                        android:layout_marginTop="25dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/dt_trans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="25dp"
+                        android:text="Manual"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:text="No kendaraan  "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="95dp"
+                        android:layout_marginTop="50dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
                     <TextView
                         android:id="@+id/dt_nomor"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/ColorBlack"
-                        android:textSize="13dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nomor kendaraan : AB 29990 KL"/>
-                </LinearLayout>
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="50dp"
+                        android:text="AB 29990 KL"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="75dp"
+                        android:text="Kapasitas "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="95dp"
+                        android:layout_marginTop="75dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/dt_kap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="75dp"
+                        android:text="6"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="100dp"
+                        android:text="Harga sewa "
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="95dp"
+                        android:layout_marginTop="100dp"
+                        android:text=":"
+                        android:textColor="@color/ColorBlack"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/dt_sewa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="100dp"
+                        android:text="30000"
+                        android:textColor="@color/bg_btn_color"
+                        android:textSize="13dp" />
+                </RelativeLayout>
             </RelativeLayout>
+
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorGrey"/>
-            <LinearLayout
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
+
                 <TextView
-                    android:textSize="13dp"
-                    android:textColor="@color/ColorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mulai sewa tanggal : "/>
+                    android:text="Mulai sewa tanggal "
+                    android:textColor="@color/ColorBlack"
+                    android:textSize="13dp" />
+
                 <TextView
                     android:id="@+id/tgl_sewa"
-                    android:textSize="13dp"
-                    android:textColor="@color/bg_btn_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tanggal 16 juni 2021 waktu 12.28 WIB"/>
+                    android:text="Tanggal 16 juni 2021 waktu 12.28 WIB"
+                    android:textColor="@color/bg_btn_color"
+                    android:textSize="13dp" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="13dp"
-                    android:textColor="@color/ColorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Akhir sewa tanggal : "/>
+                    android:layout_marginTop="10dp"
+                    android:text="Akhir sewa tanggal "
+                    android:textColor="@color/ColorBlack"
+                    android:textSize="13dp" />
+
                 <TextView
                     android:id="@+id/tgl_kembali"
-                    android:textSize="13dp"
-                    android:textColor="@color/bg_btn_color"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tanggal 17 juni 2021 waktu 12.28 WIB"/>
+                    android:layout_marginTop="5dp"
+                    android:text="Tanggal 17 juni 2021 waktu 12.28 WIB"
+                    android:textColor="@color/bg_btn_color"
+                    android:textSize="13dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <LinearLayout
-                        android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:orientation="vertical">
+
                         <TextView
-                            android:textSize="13dp"
-                            android:textColor="@color/ColorBlack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Durasi sewa : "
-                            />
+                            android:text="Durasi sewa  "
+                            android:textColor="@color/ColorBlack"
+                            android:textSize="13dp" />
+
                         <TextView
                             android:layout_marginTop="5dp"
-                            android:textSize="13dp"
-                            android:textColor="@color/ColorBlack"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total bayar: "
-                            />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-                        <TextView
                             android:id="@+id/tv_durasi"
-                            android:textSize="13dp"
-                            android:textColor="@color/bg_btn_color"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="24 Jam"
-                            />
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:id="@+id/totalByr"
-                            android:textSize="13dp"
                             android:textColor="@color/bg_btn_color"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. 300000"
-                            />
+                            android:textSize="13dp" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorGrey"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGrey" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <Button
-        android:layout_marginTop="15dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
         android:id="@+id/btn_batalT"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:backgroundTint="@color/ColorRed"
-        android:text="Batal"
         android:layout_width="match_parent"
-        android:layout_height="55dp"/>
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/ColorRed"
+        android:text="Batal" />
     <ProgressBar
         android:id="@+id/loading_det_trans"
         android:visibility="gone"

@@ -10,10 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Adapter
-import android.widget.Button
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -31,78 +29,116 @@ import retrofit2.Response
 
 class PencarianFragment : Fragment() {
     private lateinit var rvCariMobil : RecyclerView
-    private lateinit var Swipe : SwipeRefreshLayout
-    private lateinit var Cari : SearchView
-    private lateinit var LayoutManager: GridLayoutManager
-
+    private lateinit var cari : SearchView
+    private lateinit var layoutManager: GridLayoutManager
+    private lateinit var rl : RelativeLayout
+    private lateinit var pbCari : ProgressBar
+    private lateinit var empty : LinearLayout
+    private lateinit var pbLoad : ProgressBar
+    private lateinit var cv : CardView
+    private lateinit var btnLoad : ImageButton
+    private lateinit var bgCari : LinearLayout
+    private lateinit var llGagal : LinearLayout
+    private var page = 1
+    private var totalPage = 1
+    private var isLoading = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view : View = inflater.inflate(R.layout.fragment_pencarian, container, false)
-        LayoutManager = GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false)
+        layoutManager = GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false)
         init(view)
         btn()
         search()
         display()
-        Cari.queryHint = "Cari Disini"
+        searchView()
+        cv.visibility = View.GONE
+
         return view
+    }
+    private fun searchView(){
+        rl.setOnClickListener {
+         cari.isIconified = false
+        }
+
+
     }
     private var q = ""
     private var adapter : AdapterMobil? = null
     private var listmobil : ArrayList<Mobil> = ArrayList()
     private fun display(){
         rvCariMobil.setHasFixedSize(true)
-        rvCariMobil.layoutManager = LayoutManager
+        rvCariMobil.layoutManager = layoutManager
         adapter = activity?.let { AdapterMobil(it) }
         rvCariMobil.adapter = adapter
         adapter!!.setData()
     }
     private fun getMobil(isOnReferesh : Boolean){
+        isLoading = true
         val query = q
-        if (!isOnReferesh)
-        ApiConfig.instanceRetrofit.searchMobil(query).enqueue(object : Callback<ResponModel> {
+        if (!isOnReferesh){
+            pbLoad.visibility = View.VISIBLE
+        }else{
+            pbCari.visibility = View.VISIBLE
+        }
+        val param = HashMap<String,String>()
+        param["page"] = page.toString()
+        ApiConfig.instanceRetrofit.searchMobil(query,param).enqueue(object : Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
-                val respon = response.body()
-                if(respon != null){
-                    if (respon.success == 1){
-                        adapter?.addList(respon.mobil)
-
-                        Log.d("RESPONS", "displayData: "+respon.mobil)
+                val respon = response.body()?.page!!.data
+                totalPage = response.body()?.page!!.last_page
+                if(!respon.isEmpty()) {
+                    adapter!!.addList(respon)
+                    if (totalPage == page) {
+                        cv.visibility = View.GONE
+                    } else {
+                        cv.visibility = View.VISIBLE
                     }
-                    if (respon.success == 1 && respon.mobil.isEmpty()){
-
-                    }
+                    pbCari.visibility = View.GONE
+                    pbLoad.visibility = View.GONE
+                    Log.e("RESPONS", "1: " + respon.isEmpty())
                 }else{
-
+                    Log.e("RESPONS", "3: "+ respon)
+                    empty.visibility = View.VISIBLE
+                    cv.visibility = View.GONE
+                    pbCari.visibility = View.GONE
+                    pbLoad.visibility = View.GONE
                 }
 
             }
 
             override fun onFailure(call: Call<ResponModel>, t: Throwable) {
-                Log.d("RESPONS", "ERROR: "+t.message)
+                cv.visibility = View.GONE
+                pbLoad.visibility = View.GONE
+                pbCari.visibility = View.GONE
+                llGagal.visibility = View.VISIBLE
+                Log.e("RESPONS", "ERROR: "+t.message)
             }
 
         })
     }
-    fun search(){
-        Cari.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+    private fun search(){
+        cari.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
+                page = 1
+                empty.visibility = View.GONE
+                bgCari.visibility = View.GONE
                 q = query.toString()
                 Log.e("QUERY",q + query)
-//               adapter!!.filter.filter(query)
-                getMobil(false)
-                hideKey(Cari)
-
+                getMobil(true)
+                hideKey(cari)
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 if(adapter == null){
-                    Toast.makeText(activity, "Data ksosng", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Data tidak ditemukan", Toast.LENGTH_SHORT).show()
                     return true
                 }
+                empty.visibility = View.GONE
+                bgCari.visibility = View.VISIBLE
+                llGagal.visibility = View.GONE
                 adapter!!.filter.filter(newText)
                 return true
             }
@@ -113,20 +149,28 @@ class PencarianFragment : Fragment() {
         key.hideSoftInputFromWindow(view.windowToken,0)
     }
     private fun btn(){
-        Swipe.setOnRefreshListener {
-            Swipe.isRefreshing = false
+        btnLoad.setOnClickListener {
+            cv.visibility = View.GONE
+            pbLoad.visibility = View.VISIBLE
+            isLoading = false
+            if (!isLoading && page < totalPage ){
+                page++
+                Log.d("RESPONS", "Page load: "+ page + totalPage)
+                getMobil(false)
+            }
         }
         
     }
     private fun init(view: View) {
         rvCariMobil = view.findViewById(R.id.rv_carimobil)
-        Swipe = view.findViewById(R.id.swRefresh)
-        Cari = view.findViewById(R.id.ic_cari)
-
+        cari = view.findViewById(R.id.ic_cari)
+        rl = view.findViewById(R.id.rl_cari)
+        pbCari = view.findViewById(R.id.loading_pencarian)
+        empty = view.findViewById(R.id.ll_empty_cari)
+        cv = view.findViewById(R.id.pc_cv)
+        pbLoad =  view.findViewById(R.id.loading_page)
+        btnLoad = view.findViewById(R.id.pc_cv_load)
+        bgCari = view.findViewById(R.id.ll_bg)
+        llGagal = view.findViewById(R.id.cari_gagal)
     }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }

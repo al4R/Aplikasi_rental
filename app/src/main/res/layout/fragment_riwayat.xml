@@ -23,39 +23,52 @@
             android:text="Riwayat"/>
 
     </LinearLayout>
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/sc"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swp_riwayat"
+        android:layout_width="match_parent"
         android:layout_below="@+id/lL"
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/sc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:id="@+id/rv_riwayat"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:id="@+id/rv_riwayat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/lL_empty"
-        android:layout_below="@+id/lL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <include
             layout="@layout/empty"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/riwayat_gagal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/layout_gagal"
             />
     </LinearLayout>
     <ProgressBar

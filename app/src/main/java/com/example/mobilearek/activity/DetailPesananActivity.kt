@@ -26,8 +26,6 @@ import kotlinx.android.synthetic.main.activity_detail_pesanan.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.list_pesanan.tv_mobil
 import kotlinx.android.synthetic.main.toolbar.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 
@@ -94,8 +92,21 @@ class DetailPesananActivity : AppCompatActivity() {
 
         })
     }
-
-    fun updateMobil(){
+//    private var listMetode : ArrayList<Metode> =ArrayList()
+//    private fun getMetode(){
+//        ApiConfig.instanceRetrofit.getMetode().enqueue(object : retrofit2.Callback<ResponModel> {
+//            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+//                if(response.body() != null){
+//                    response.body()!!.metode = listMetode
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+//                TODO("Not yet implemented")
+//            }
+//        })
+//        }
+    private fun updateMobil(){
         val id = mobil.id
         ApiConfig.instanceRetrofit.updatemobil(id,2).enqueue(object : retrofit2.Callback<ResponModel> {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
@@ -123,7 +134,7 @@ class DetailPesananActivity : AppCompatActivity() {
         })
     }
 
-    fun delete(){
+    private fun delete(){
         CompositeDisposable().add(Observable.fromCallable { myDb.daoPesan().delete(mobil) }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
@@ -132,11 +143,9 @@ class DetailPesananActivity : AppCompatActivity() {
                 Log.d("respons", "data deleted")
             })
     }
-    fun spiner(){
+    private fun spiner(){
         val option = arrayOf("Pilih metode bayar","Dana","OVO","Bank BCA","Bank BRI","Bank Mandiri")
-
         sp.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,option)
-
         sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             @SuppressLint("SetTextI18n")
             override fun onItemSelected(
@@ -202,15 +211,17 @@ class DetailPesananActivity : AppCompatActivity() {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
     @SuppressLint("SetTextI18n")
-    fun getData(){
+    private fun getData(){
         val data = intent.getStringExtra("extra")
         mobil = Gson().fromJson<Mobil>(data, Mobil::class.java)
         tv_mobil.text = mobil.merk+" "+mobil.model
         tv_trans.text = mobil.transmisi
         tv_noPol.text = mobil.no_kendaraan
-        tv_tglPesan.text = mobil.tglSewa
-        tv_tglKembali.text = mobil.tglKembali
-        tv_totalBayar.text = mobil.total
+        tv_tglPesan.text = mobil.tglSewa+" WIB"
+        tv_tglKembali.text = mobil.tglKembali+" WIB"
+        tv_totalBayar.text = "Rp "+mobil.total
+        tv_kap.text = mobil.kapasitas+" Orang"
+        tv_hg_sewa.text = "Rp "+mobil.harga
         val img = Config.urlData + mobil.image
         Picasso.get()
             .load(img)
@@ -224,6 +235,7 @@ class DetailPesananActivity : AppCompatActivity() {
     }
     override fun onResume() {
         getData()
+//        getMetode()
         super.onResume()
 
     }

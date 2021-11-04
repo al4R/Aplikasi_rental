@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_tr"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="7dp"
     android:layout_marginHorizontal="10dp"
@@ -11,38 +11,99 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/tv_mobil"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/ColorBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mobil"/>
+            android:layout_marginBottom="10dp"
+            android:text="Mobil"
+            android:textColor="@color/colorsoftBlack" />
 
         <LinearLayout
             android:layout_below="@+id/tv_mobil"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_rp"
                 android:textColor="@color/colorsoftBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total bayar : "/>
+                android:text="Total bayar  "/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal sewa "/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal kembali "/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="105dp"
+            android:layout_below="@+id/tv_mobil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorsoftBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="115dp"
+            android:layout_below="@+id/tv_mobil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_total"
                 android:textColor="@color/bg_btn_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp.200000"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_tgl_sewa"
+                android:textColor="@color/bg_btn_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.200000"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_tgl_kembali"
+                android:textColor="@color/bg_btn_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.200000"/>
         </LinearLayout>
+
+
         <TextView
             android:id="@+id/tv_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="Update"
+            android:text="Edit pesanan"
             android:textColor="@color/bg_btn_color"/>
         <TextView
             android:id="@+id/tv_cancel"
@@ -52,7 +113,7 @@
             android:textColor="@color/ColorRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"/>
+            android:text="Batalkan pesanan"/>
         <TextView
             android:id="@+id/tv_lanjut"
             android:layout_width="wrap_content"

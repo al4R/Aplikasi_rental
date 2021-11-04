@@ -22,8 +22,8 @@
     </LinearLayout>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_below="@+id/lin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/swipe">
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nest_scrol"
@@ -53,7 +53,6 @@
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/ll_empty"
-        android:layout_below="@+id/lin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
@@ -61,6 +60,16 @@
             layout="@layout/empty"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/pesan_gagal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/layout_gagal"
+            />
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/loading_bayar"
         android:visibility="gone"
